@@ -120,6 +120,11 @@ namespace SSFGlasses
 
         public bool OpenDoor(int door)
         {
+            if (_App.Delta == false)
+            {
+
+                return false;
+            }
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
@@ -128,6 +133,12 @@ namespace SSFGlasses
 
         public bool CloseDoor(int door)
         {
+            if (_App.Delta == false)
+            {
+
+                return false;
+            }
+
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
@@ -137,6 +148,12 @@ namespace SSFGlasses
 
         public bool OpenJack(int jack)
         {
+            if (_App.Delta == false)
+            {
+
+                return false;
+            }
+
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
@@ -145,6 +162,12 @@ namespace SSFGlasses
 
         public bool CloseJack(int jack)
         {
+            if (_App.Delta == false)
+            {
+
+                return false;
+            }
+
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
             _App.WriteOnRegister(CurrentRack.column, (byte)0);
@@ -154,6 +177,7 @@ namespace SSFGlasses
 
         private void button13_Click(object sender, EventArgs e)
         {
+          
             int i = 1;
             if (OpenDoor(door: i))
                 Log("Door number " + i + " OPENED successfuly");
