@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GlassesDatabase" Class="LinqDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=GlassesDatabase;User ID=sa" SettingsObjectName="SSFGlasses.Properties.Settings" SettingsPropertyName="GlassesDatabaseConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BrandTBL" Member="BrandTBLs">
+    <Type Name="BrandTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="prefix" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RackID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="fromCell" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="toCell" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UnloadReport" Member="UnloadReports">
+    <Type Name="UnloadReport">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="codeKala" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="brandText" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="model" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="operator" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="date" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="time" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cells" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="rack" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="why" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CustomerTBL" Member="CustomerTBLs">
+    <Type Name="CustomerTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fullname" Type="System.String" DbType="NVarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DetailsTBL" Member="DetailsTBLs">
+    <Type Name="DetailsTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="kalaid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ax" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="color" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GenderTBL" Member="GenderTBLs">
+    <Type Name="GenderTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HostTBL" Member="HostTBLs">
+    <Type Name="HostTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="hostname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="hostType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="stat" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ipAddress" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KalaListTBL" Member="KalaListTBLs">
+    <Type Name="KalaListTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="kalaid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userAdd" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="barcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="date" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="time" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="cell" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="carton" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KalaTBL" Member="KalaTBLs">
+    <Type Name="KalaTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="codeKala" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="brand" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="model" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="tag" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="gender" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="barcode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MessageTBL" Member="MessageTBLs">
+    <Type Name="MessageTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="type" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="[read]" Member="read" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="archive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="docoutid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="timestamp" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OperaionsTBL" Member="OperaionsTBLs">
+    <Type Name="OperaionsTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="title" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.orderedKalaTBL" Member="orderedKalaTBLs">
+    <Type Name="orderedKalaTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="kalaid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="time" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fullname" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RackTBL" Member="RackTBLs">
+    <Type Name="RackTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="x" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="y" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="max" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tag" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="atf" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ip" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ReportTBL" Member="ReportTBLs">
+    <Type Name="ReportTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="docid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="time" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="userid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="operation" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SetupTBL" Member="SetupTBLs">
+    <Type Name="SetupTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="programName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="version" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="tag" Type="System.String" DbType="NVarChar(1000)" CanBeNull="true" />
+      <Column Name="gridCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="port" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="sterategy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="manualCellSet" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="securityType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="tempMax" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="startTime" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="endTime" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="readMaxTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="thursday" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="programWorkingPath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="smslogin" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="smsTemp" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="smsRack90" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="regNameFP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SSFConsoleIP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.triggerTBL" Member="triggerTBLs">
+    <Type Name="triggerTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ttr" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="hostID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="forceExit" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="uid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="message" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="host" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="senderHost" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="reqTrig" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsersTBL" Member="UsersTBLs">
+    <Type Name="UsersTBL">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fullname" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="priority" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="semat" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="lastlogin" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="visit" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="rfid" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="fingerPrint" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="mobilenumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
