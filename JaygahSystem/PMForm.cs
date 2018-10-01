@@ -79,7 +79,6 @@ namespace SSFGlasses
             this.Close();
 
         }
-        LinqDatabaseDataContext db = new LinqDatabaseDataContext();
         private void button109_Click(object sender, EventArgs e)
         {
             if (_App.Delta)
@@ -113,9 +112,7 @@ namespace SSFGlasses
 
         private void button110_Click(object sender, EventArgs e)
         {
-            if (_App.send("DC=1"))
-                Log("All of Doors CLOSED");
-            else
+
                 Log(Error: true);
 
         }
@@ -538,12 +535,6 @@ namespace SSFGlasses
             this.Cursor = Cursors.Default;
         }
 
-        private void button116_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.WaitCursor;
-            Log(_App.getStringFRomUrl("http://" + _App.ip_ssf_console + "/3"));
-            this.Cursor = Cursors.Default;
-        }
 
         private void button117_Click(object sender, EventArgs e)
         {
@@ -560,30 +551,30 @@ namespace SSFGlasses
 
                 int index = cmbRack.SelectedIndex;
 
-                _App.UpdateSensors();
-                var sen = _App.Sensors;
-                int i = 0;
-                sensor01.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor02.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor03.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor04.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor05.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor06.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor07.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor08.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor09.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor10.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor11.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor12.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor13.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor14.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor15.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor16.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor17.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor18.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor19.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor20.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                sensor21.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //_App.UpdateSensors();
+                //var sen = _App.Sensors;
+                //int i = 0;
+                //sensor01.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor02.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor03.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor04.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor05.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor06.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor07.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor08.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor09.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor10.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor11.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor12.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor13.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor14.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor15.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor16.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor17.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor18.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor19.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor20.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                //sensor21.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
             }
             catch
             { }

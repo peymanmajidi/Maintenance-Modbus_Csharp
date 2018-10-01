@@ -94,11 +94,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutNe.cs">
+    <Compile Include="AboutMe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutNe.Designer.cs">
-      <DependentUpon>AboutNe.cs</DependentUpon>
+    <Compile Include="AboutMe.Designer.cs">
+      <DependentUpon>AboutMe.cs</DependentUpon>
     </Compile>
     <Compile Include="bin\Debug\CrystalUnload.cs">
       <AutoGen>True</AutoGen>
@@ -111,30 +111,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KalaReport.rpt</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="databaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>databaseDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="JaygahSystemDatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JaygahSystemDatabaseDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="LinqDatabase.cs">
-      <DependentUpon>LinqDatabase.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="LinqDatabase1.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LinqDatabase.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="ModeBusNewFRM.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModeBusNewFRM.Designer.cs">
-      <DependentUpon>ModeBusNewFRM.cs</DependentUpon>
     </Compile>
     <Compile Include="PMForm.cs">
       <SubType>Form</SubType>
@@ -156,8 +132,8 @@
     </Compile>
     <Compile Include="_App.cs" />
     <Compile Include="zkemkeeper\CZKEMClass.cs" />
-    <EmbeddedResource Include="AboutNe.resx">
-      <DependentUpon>AboutNe.cs</DependentUpon>
+    <EmbeddedResource Include="AboutMe.resx">
+      <DependentUpon>AboutMe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="bin\Debug\CrystalUnload.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -168,49 +144,16 @@
       <LastGenOutput>KalaReport.cs</LastGenOutput>
     </EmbeddedResource>
     <Fakes Include="Fakes\FaconSvr.fakes" />
-    <None Include="JaygahSystemDatabaseDataSet.xsc">
-      <DependentUpon>JaygahSystemDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="JaygahSystemDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>JaygahSystemDatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="JaygahSystemDatabaseDataSet.xss">
-      <DependentUpon>JaygahSystemDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="LinqDatabase.dbml.layout">
-      <DependentUpon>LinqDatabase.dbml</DependentUpon>
-    </None>
-    <EmbeddedResource Include="ModeBusNewFRM.resx">
-      <DependentUpon>ModeBusNewFRM.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="App1.config" />
     <EmbeddedResource Include="PMForm.resx">
       <DependentUpon>PMForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App1.config" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="databaseDataSet.xsc">
-      <DependentUpon>databaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="databaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>databaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="databaseDataSet.xss">
-      <DependentUpon>databaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="LinqDatabase.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>LinqDatabase1.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\DataSources\JaygahSystem.ServiceReference2.MessageInfo.datasource" />
     <None Include="Properties\DataSources\JaygahSystem.ServiceReference2.MessageInfo1.datasource" />
     <None Include="Properties\Settings.settings">
