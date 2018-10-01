@@ -305,7 +305,6 @@ X:\Peyman\Documents\Visual Studio 2015\Projects\SSF Glasses Project\JaygahSystem
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\SSFGlassesProject.csprojFakesResolveAssemblyReference.cache
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\SSFGlassesProject.csprojResolveAssemblyReference.cache
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\SSFGlasses.AboutMe.resources
-X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\SSFGlasses.ModeBusNewFRM.resources
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\SSFGlasses.PMForm.resources
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\SSFGlasses.Properties.Resources.resources
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\SSFGlassesProject.csproj.GenerateResource.Cache

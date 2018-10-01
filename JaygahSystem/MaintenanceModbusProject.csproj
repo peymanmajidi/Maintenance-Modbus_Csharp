@@ -1,0 +1,846 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7CBD76B2-53DE-41E7-A7AF-87F434B03601}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SSFGlasses</RootNamespace>
+    <AssemblyName>MaintenanceModbusProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>BLACK GLASSES.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BusinessRefinery.Barcode.Win">
+      <HintPath>..\..\Issar\server\JaygahSystem4\JaygahSystem\BusinessRefinery.Barcode.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="JaygahSystemApp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <ExecutableExtension>.exe</ExecutableExtension>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="ModbusTCP">
+      <HintPath>G:\_Projects\ProfilerBySSFProject_alpha\ProfilerBySSFProject\bin\Debug - Copy\ModbusTCP.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Taghvim_View">
+      <HintPath>..\..\..\..\..\Desktop\Taghvim_View.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutMe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutMe.Designer.cs">
+      <DependentUpon>AboutMe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="bin\Debug\CrystalUnload.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalUnload.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="bin\Debug\KalaReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KalaReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReference2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="_App.cs" />
+    <Compile Include="zkemkeeper\CZKEMClass.cs" />
+    <EmbeddedResource Include="AboutMe.resx">
+      <DependentUpon>AboutMe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\CrystalUnload.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalUnload.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bin\Debug\KalaReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>KalaReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Fakes Include="Fakes\FaconSvr.fakes" />
+    <None Include="App1.config" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\JaygahSystem.ServiceReference2.MessageInfo.datasource" />
+    <None Include="Properties\DataSources\JaygahSystem.ServiceReference2.MessageInfo1.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\ServiceReference2\SendService1.wsdl" />
+    <None Include="Service References\ServiceReference2\SendService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference2\SendService61.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference2\SendService62.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference2\SendService63.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference2\SendService64.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceReference2\SendService65.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\subscribe.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\subscribe1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash2.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash3.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash93.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash931.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RED SPLSH.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RED SPLSH1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horirow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new pannle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new pannle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new pannle2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message-ico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slide32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Xion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\userplus32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wand32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gear32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contactcard32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folderplus32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftturnarrow32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paperstar32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bookmarks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AveDesk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ACDSee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\E-Mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lightbulb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ICQ.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paper32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paperphoto32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\papermusic32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bargraph32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\article32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MSN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Xion1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Contact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message-ico1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message-ico2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlock32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\111111111111111111.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lockscreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simplycons_35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simplycons_102.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Slideshow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pictures.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Documents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Steam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pictures1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Documents1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simplycons_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\simplycons_46.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Projector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user_circle1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\message-ico3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alert-ico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inbox1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backup.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backup1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new pannle3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\000.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\switches_on.png" />
+    <None Include="Resources\switches.png" />
+    <None Include="Service References\ServiceReference2\SendService1.disco" />
+    <None Include="Resources\server.png" />
+    <None Include="Resources\simplycons_07.png" />
+    <None Include="Resources\scan-animation.gif" />
+    <None Include="Resources\Steam281.png" />
+    <None Include="Resources\Videos.png" />
+    <None Include="Resources\WinAmp.png" />
+    <None Include="Resources\Explorer2.png" />
+    <None Include="Resources\open1.png" />
+    <None Include="Resources\1464770631_report.png" />
+    <None Include="Resources\1464770628_advantage_diagram.png" />
+    <None Include="Resources\1464770628_advantage_diagram1.png" />
+    <None Include="Resources\attachment-128.png" />
+    <None Include="Resources\paperclip4_black.png" />
+    <None Include="Resources\button_cancel.png" />
+    <None Include="Resources\Gear.png" />
+    <None Include="Resources\client.png" />
+    <None Include="Resources\pic1.png" />
+    <None Include="Resources\pic2.png" />
+    <None Include="Resources\pic3.png" />
+    <None Include="Resources\pic4.png" />
+    <None Include="Resources\pic5.png" />
+    <None Include="Resources\pic6.png" />
+    <None Include="Resources\glass1.jpg" />
+    <None Include="Resources\glass2.jpg" />
+    <None Include="Resources\glass3.jpg" />
+    <None Include="Resources\glass4.jpg" />
+    <None Include="Resources\glass5.jpg" />
+    <None Include="Resources\defaultBrand.png" />
+    <None Include="Resources\pixel-glasses.jpeg" />
+    <None Include="Resources\NoPicAvailable.png" />
+    <None Include="Resources\orange.png" />
+    <None Include="Resources\orangeBar.png" />
+    <None Include="Resources\greenBar.png" />
+    <None Include="Resources\blueBar.png" />
+    <None Include="Resources\glass.png" />
+    <None Include="Resources\glass_hover.png" />
+    <None Include="Resources\glass_hover1.png" />
+    <Content Include="BLACK GLASSES.ico" />
+    <None Include="Resources\photo_2017-05-25_08-15-36.jpg" />
+    <None Include="Resources\off.png" />
+    <None Include="Resources\on.gif" />
+    <Content Include="Resources\Printer.png" />
+    <None Include="Resources\Steam28.png" />
+    <None Include="Resources\Printer1.png" />
+    <None Include="Resources\rfid100.png" />
+    <None Include="Resources\rfid50.png" />
+    <None Include="Resources\barcode.png" />
+    <None Include="Resources\url1.png" />
+    <None Include="Resources\images.png" />
+    <None Include="Resources\url.png" />
+    <None Include="Resources\L08.png" />
+    <None Include="Resources\L07.png" />
+    <None Include="Resources\L06.png" />
+    <None Include="Resources\L05.png" />
+    <None Include="Resources\L04.png" />
+    <None Include="Resources\L03.png" />
+    <None Include="Resources\L02.png" />
+    <None Include="Resources\L01.png" />
+    <None Include="Resources\RACKORG.png" />
+    <None Include="Resources\RACKOFFICE.png" />
+    <None Include="Resources\Document-96.png" />
+    <None Include="Resources\Scanner1.png" />
+    <None Include="Resources\Paper-96.png" />
+    <None Include="Resources\Paper Plane-96.png" />
+    <None Include="Resources\Paper Windmill-96.png" />
+    <None Include="Resources\Sheet of Paper-96.png" />
+    <None Include="Resources\Typewriter With Paper-96.png" />
+    <None Include="Resources\Scanner.png" />
+    <None Include="Resources\simplycons_201.png" />
+    <None Include="Resources\Untitled-11.jpg" />
+    <None Include="Resources\sms1.png" />
+    <None Include="Resources\sms.png" />
+    <None Include="Resources\SMS-yellow.png" />
+    <None Include="Resources\mail-message-send-icon.png" />
+    <None Include="Resources\simplycons_20.png" />
+    <None Include="Resources\simplycons_751.png" />
+    <None Include="Service References\ServiceReference2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceReference2\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference2\configuration91.svcinfo" />
+    <None Include="Resources\simplycons_75.png" />
+    <None Include="Resources\698925-icon-92-inbox-download-128.png" />
+    <None Include="Resources\icon_1x.png" />
+    <None Include="Resources\read_selected.png" />
+    <None Include="Resources\read_normal.png" />
+    <None Include="Resources\inbox_selected.png" />
+    <None Include="Resources\inbox_normal.png" />
+    <None Include="Resources\INBOXX copy.png" />
+    <None Include="Resources\INBOXX.png" />
+    <None Include="Resources\Recycle2.png" />
+    <None Include="Resources\public %281%293.png" />
+    <None Include="Resources\public %281%292.png" />
+    <None Include="Resources\RED SPLSH3.jpg" />
+    <None Include="Resources\login7.jpg" />
+    <None Include="Resources\documents %281%292.png" />
+    <None Include="Resources\laser_wip_black.png" />
+    <None Include="Resources\Fingerprint50per.png" />
+    <None Include="Resources\Fingerprint.png" />
+    <None Include="Resources\level011.png" />
+    <None Include="Resources\rack_org.png" />
+    <None Include="Resources\rack_offic.png" />
+    <None Include="Resources\level06.png" />
+    <None Include="Resources\level05.png" />
+    <None Include="Resources\level04.png" />
+    <None Include="Resources\level03.png" />
+    <None Include="Resources\level02.png" />
+    <None Include="Resources\level01.png" />
+    <None Include="Resources\dama6.png" />
+    <None Include="Resources\dama5.png" />
+    <None Include="Resources\dama4.png" />
+    <None Include="Resources\dama3.png" />
+    <None Include="Resources\dama2.png" />
+    <None Include="Resources\dama1.png" />
+    <None Include="Resources\simplycons_109.png" />
+    <None Include="Resources\logo-out.png" />
+    <None Include="Resources\Untitled-13.png" />
+    <None Include="Resources\Untitled-12.png" />
+    <None Include="Resources\zanjir-logo2.png" />
+    <None Include="Resources\simplycons_57.png" />
+    <None Include="Resources\simplycons_81.png" />
+    <None Include="Resources\graphics_pen1.png" />
+    <None Include="Resources\simplycons_05.png" />
+    <None Include="Resources\open.png" />
+    <None Include="Resources\5.jpg" />
+    <None Include="Resources\rfid-tag-icon-61215.png" />
+    <None Include="Resources\zanjir-logo1.png" />
+    <None Include="Resources\numbers.png" />
+    <None Include="Resources\zanjir-logo.png" />
+    <None Include="Resources\rOrgan-120.png" />
+    <None Include="Resources\rOffice-120.png" />
+    <None Include="Resources\SYSTEM ALERT STOP ICON1.png" />
+    <None Include="Resources\RACK- small bnf1.png" />
+    <None Include="Resources\RACKorgright.png" />
+    <None Include="Resources\users %281%29.png" />
+    <None Include="Resources\users.png" />
+    <None Include="Resources\users_folder_black.png" />
+    <None Include="Resources\RACKorg100.png" />
+    <None Include="Resources\rOrgan.png" />
+    <None Include="Resources\rOffice.png" />
+    <None Include="Resources\RACK2001.png" />
+    <None Include="Resources\simplycons_37.png" />
+    <None Include="Resources\simplycons_033.png" />
+    <None Include="Resources\simplycons_1222.png" />
+    <None Include="Resources\simplycons_711.png" />
+    <None Include="Resources\simplycons_1221.png" />
+    <None Include="Resources\simplycons_77.png" />
+    <None Include="Resources\RACK- small bnf.png" />
+    <None Include="Resources\RACK small abi.png" />
+    <None Include="Resources\RACK-g.png" />
+    <None Include="Resources\RACK1.png" />
+    <None Include="Resources\title.jpg" />
+    <None Include="Resources\title3.png" />
+    <None Include="Resources\title2.png" />
+    <None Include="Resources\title1.png" />
+    <None Include="Resources\title.png" />
+    <None Include="Resources\documents %281%291.png" />
+    <None Include="Resources\documents %281%29.png" />
+    <None Include="Resources\RACK.png" />
+    <None Include="Resources\RACK200.png" />
+    <None Include="Resources\groups.png" />
+    <None Include="Resources\public %281%291.png" />
+    <None Include="Resources\public.png" />
+    <None Include="Resources\public %281%29.png" />
+    <None Include="Resources\graphics_pen.png" />
+    <None Include="Resources\user %281%29.png" />
+    <None Include="Resources\MSN3.png" />
+    <None Include="Resources\simplycons_71.png" />
+    <None Include="Resources\simplycons_13.png" />
+    <None Include="Resources\laser2.png" />
+    <None Include="Resources\laser1.png" />
+    <None Include="Resources\laser.png" />
+    <None Include="Resources\creative_suite.png" />
+    <None Include="Resources\simplycons_54.png" />
+    <None Include="Resources\numbers %281%29.png" />
+    <None Include="Resources\industrial1.png" />
+    <None Include="Resources\archive %282%29.png" />
+    <None Include="Resources\emptytrash1.png" />
+    <None Include="Resources\fulltrash.png" />
+    <None Include="Resources\emptytrash.png" />
+    <None Include="Resources\full1.png" />
+    <None Include="Resources\full.png" />
+    <None Include="Resources\Recycle_Bin_Full %281%29.png" />
+    <None Include="Resources\122222.png" />
+    <None Include="Resources\Recycle1.png" />
+    <None Include="Resources\AveDesk1.png" />
+    <None Include="Resources\Recycle.png" />
+    <None Include="Resources\256.png" />
+    <None Include="Resources\122221.png" />
+    <None Include="Resources\12222.png" />
+    <None Include="Resources\thumb_Recycle_Bin_Empty.png" />
+    <None Include="Resources\industrial.png" />
+    <None Include="Resources\folder_actions_setup.png" />
+    <None Include="Resources\Task Manager1.png" />
+    <None Include="Resources\Task Manager.png" />
+    <None Include="Resources\simplycons_032.png" />
+    <None Include="Resources\simplycons_134.png" />
+    <None Include="Resources\MSN2.png" />
+    <None Include="Resources\simplycons_104.png" />
+    <None Include="Resources\346161.png" />
+    <None Include="Resources\34616.png" />
+    <None Include="Resources\1122255.jpg" />
+    <None Include="Resources\Untitled-11.png" />
+    <None Include="Resources\rrrrrr1.jpg" />
+    <None Include="Resources\login22.jpg" />
+    <None Include="Resources\rrrrrr2.jpg" />
+    <None Include="Resources\Personal.png" />
+    <None Include="Resources\alert-ico2.png" />
+    <None Include="Resources\rrrrrr.jpg" />
+    <None Include="Resources\login21.jpg" />
+    <None Include="Resources\login6.jpg" />
+    <None Include="Resources\rfid1.jpg" />
+    <None Include="Resources\simplycons_122.png" />
+    <None Include="Resources\simplycons_72.png" />
+    <None Include="Resources\rfid.jpg" />
+    <None Include="Resources\simplycons_031.png" />
+    <None Include="Resources\simplycons_130.png" />
+    <None Include="Resources\Untitled-1.png" />
+    <None Include="Resources\simplycons_491.png" />
+    <None Include="Resources\simplycons_49.png" />
+    <None Include="Resources\simplycons_38.png" />
+    <None Include="Resources\Bookmarks1.png" />
+    <None Include="Resources\Clock.png" />
+    <None Include="Resources\Contact2.png" />
+    <None Include="Resources\simplycons_95.png" />
+    <None Include="Resources\simplycons_781.png" />
+    <None Include="Resources\MSN1.png" />
+    <None Include="Resources\Finder.png" />
+    <None Include="Resources\simplycons_93.png" />
+    <None Include="Resources\Contact1.png" />
+    <None Include="Resources\title logo2.png" />
+    <None Include="Resources\title logo1.png" />
+    <None Include="Resources\title logo.png" />
+    <None Include="Resources\SYSTEM ALERT STOP ICON.png" />
+    <None Include="Resources\button-push-icon.png" />
+    <None Include="Resources\r3.png" />
+    <None Include="Resources\Untitled-1.jpg" />
+    <None Include="Resources\mk.png" />
+    <None Include="Resources\rack11111.png" />
+    <None Include="Resources\r27.png" />
+    <None Include="Resources\light8.png" />
+    <None Include="Resources\r26.png" />
+    <None Include="Resources\light7.png" />
+    <None Include="Resources\r25.png" />
+    <None Include="Resources\light6.png" />
+    <None Include="Resources\r24.png" />
+    <None Include="Resources\r23.png" />
+    <None Include="Resources\r22.png" />
+    <None Include="Resources\light5.png" />
+    <None Include="Resources\r21.png" />
+    <None Include="Resources\sel1.png" />
+    <None Include="Resources\sel.png" />
+    <None Include="Resources\light4.png" />
+    <None Include="Resources\light3.png" />
+    <None Include="Resources\light2.png" />
+    <None Include="Resources\light1.png" />
+    <None Include="Resources\light.png" />
+    <None Include="Resources\r2.png" />
+    <None Include="Resources\folder32.png" />
+    <None Include="Resources\simplycons_78.png" />
+    <None Include="Resources\boxes.png" />
+    <None Include="Resources\lock.jpg" />
+    <None Include="Resources\message3.jpg" />
+    <None Include="Resources\login5.jpg" />
+    <None Include="Resources\RED SPLSH2.jpg" />
+    <None Include="Resources\zangir2.png" />
+    <None Include="Resources\user_circle21.png" />
+    <None Include="Resources\exchange32.png" />
+    <None Include="Resources\isAta.png" />
+    <None Include="Resources\isPhoto.png" />
+    <None Include="Resources\horizental panel.png" />
+    <None Include="Resources\user_circle2.png" />
+    <None Include="Resources\message-ico4.png" />
+    <None Include="Resources\alert-ico1.png" />
+    <None Include="Resources\11.png" />
+    <None Include="Resources\3.png" />
+    <None Include="Resources\2.png" />
+    <None Include="Resources\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Sql.Server.Express.10.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server 2008 Express</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference2\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

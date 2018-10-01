@@ -28,7 +28,7 @@ namespace SSFGlasses
             Application.EnableVisualStyles();
             //Application.Run(new ManagerHome());
             
-            Application.Run(new PMForm());
+            Application.Run(new MainForm());
 
             //  Application.Run(new LoginForm());
         }

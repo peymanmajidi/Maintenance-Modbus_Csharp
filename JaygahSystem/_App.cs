@@ -42,10 +42,6 @@ namespace SSFGlasses
         public static string username = "test";
         public static string password = "";
 
-        public static string connection = js.Connection();
-        public static int hostID = js.getID();
-        public static string hostType = js.getType();
-
 
         public static int capacity = 0;
         public static int free = 0;
