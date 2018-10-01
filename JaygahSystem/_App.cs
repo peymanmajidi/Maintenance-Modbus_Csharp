@@ -17,7 +17,7 @@ using System.Collections;
 
 namespace SSFGlasses
 {
-    class _app
+    class _App
     {
 
         public  const byte JACK_START_ADDRESS = 1;
@@ -121,14 +121,14 @@ namespace SSFGlasses
 
         public static void permissionError()
         {
-            _app.SystemError("شما مجوز لازم برای انجام این عملیات را ندارید");
-            _app.playVoice("oo");
+            _App.SystemError("شما مجوز لازم برای انجام این عملیات را ندارید");
+            _App.playVoice("oo");
         }
        
         public static int GetFirstCellOfBrand( BrandTBL brand)
         {
             LinqDatabaseDataContext db=new LinqDatabaseDataContext();
-            if ( _app.numberOfKalaOfBrand(brand.id) > ( brand.toCell - brand.fromCell ) )
+            if ( _App.numberOfKalaOfBrand(brand.id) > ( brand.toCell - brand.fromCell ) )
                 return -2; // out of load
             if ( brand == null )
                 return 0;
@@ -161,8 +161,8 @@ namespace SSFGlasses
 
         public static bool[] getSensorsState()
         {
-            _app.GenerateRegister(100);
-            int x = _app.Sensor_Low;
+            _App.GenerateRegister(100);
+            int x = _App.Sensor_Low;
 
             string binary = Convert.ToString(x, 2);
             string rBinary="";
@@ -178,7 +178,7 @@ namespace SSFGlasses
                 result[i++] = (s == '0' ? false : true); 
             }
             //MessageBox.Show(binary);
-            x = _app.Sensor_High;
+            x = _App.Sensor_High;
 
              binary = Convert.ToString(x, 2);
              rBinary = "";
@@ -223,13 +223,13 @@ namespace SSFGlasses
             {
 
                 var host = (from h in db.HostTBLs
-                            where h.id == _app.hostID
+                            where h.id == _App.hostID
                             select h).ToList().Single();
 
-                host.id = _app.hostID;
-                host.hostname = _app.hostname();
-                host.hostType = _app.hostType;
-                host.ipAddress = _app.getIP();
+                host.id = _App.hostID;
+                host.hostname = _App.hostname();
+                host.hostType = _App.hostType;
+                host.ipAddress = _App.getIP();
                 host.stat = true;
                 db.SubmitChanges();
             }
@@ -239,10 +239,10 @@ namespace SSFGlasses
                 try
                 {
                     HostTBL host = new HostTBL();
-                    host.id = _app.hostID;
-                    host.hostname = _app.hostname();
-                    host.hostType = _app.hostType;
-                    host.ipAddress = _app.getIP();
+                    host.id = _App.hostID;
+                    host.hostname = _App.hostname();
+                    host.hostType = _App.hostType;
+                    host.ipAddress = _App.getIP();
 
 
 
@@ -265,7 +265,7 @@ namespace SSFGlasses
             try
             {
                 var tt = db.triggerTBLs.First();
-                tt.hostID = _app.hostID;
+                tt.hostID = _App.hostID;
                 tt.ttr++;
 
                 db.SubmitChanges();
@@ -273,7 +273,7 @@ namespace SSFGlasses
             catch
             {
                 triggerTBL tt = new triggerTBL();
-                tt.hostID = _app.hostID;
+                tt.hostID = _App.hostID;
                 tt.ttr++;
                 db.triggerTBLs.InsertOnSubmit(tt);
                 db.SubmitChanges();
@@ -289,27 +289,27 @@ namespace SSFGlasses
 
 
 
-            _app.deviceConnection = _app.myDevice.Connect_Net(_app.ip_ssf_console, 4370);
-            _app.myDevice.RegEvent(555, 65535);
-            return _app.deviceConnection;
+            _App.deviceConnection = _App.myDevice.Connect_Net(_App.ip_ssf_console, 4370);
+            _App.myDevice.RegEvent(555, 65535);
+            return _App.deviceConnection;
 
         }
 
 
         public static void playVoice( string msg )
         {
-            if ( _app.deviceConnection == false ) return;
-            _app.myDevice.CancelOperation();
+            if ( _App.deviceConnection == false ) return;
+            _App.myDevice.CancelOperation();
 
             switch ( msg )
             {
-                case "wrong pass": _app.myDevice.PlayVoiceByIndex(1); break;
-                case "ok": _app.myDevice.PlayVoiceByIndex(0); break;
-                case "oo": _app.myDevice.PlayVoiceByIndex(10); break;
-                case "warning": _app.myDevice.PlayVoiceByIndex(11); break;
-                case "try again": _app.myDevice.PlayVoiceByIndex(4); break;
-                case "wrong user": _app.myDevice.PlayVoiceByIndex(3); break;
-                case "alert": _app.myDevice.PlayVoiceByIndex(13); break;
+                case "wrong pass": _App.myDevice.PlayVoiceByIndex(1); break;
+                case "ok": _App.myDevice.PlayVoiceByIndex(0); break;
+                case "oo": _App.myDevice.PlayVoiceByIndex(10); break;
+                case "warning": _App.myDevice.PlayVoiceByIndex(11); break;
+                case "try again": _App.myDevice.PlayVoiceByIndex(4); break;
+                case "wrong user": _App.myDevice.PlayVoiceByIndex(3); break;
+                case "alert": _App.myDevice.PlayVoiceByIndex(13); break;
 
             }
         }
@@ -365,7 +365,7 @@ namespace SSFGlasses
             {
                 LinqDatabaseDataContext db = new LinqDatabaseDataContext(connection);
                 triggerTBL tt = new triggerTBL();
-                tt.hostID = _app.hostID;
+                tt.hostID = _App.hostID;
                 tt.ttr = 0;
                 tt.host = null;
                 db.triggerTBLs.InsertOnSubmit(tt);
@@ -405,7 +405,7 @@ namespace SSFGlasses
             {
 
                 var tt = db.triggerTBLs.First();
-                tt.hostID = _app.hostID;
+                tt.hostID = _App.hostID;
                 tt.forceExit = true;
                 db.SubmitChanges();
                 Thread t = new Thread(trigFourceOutstep2);
@@ -433,13 +433,13 @@ namespace SSFGlasses
             {
 
                 var host = (from h in db.HostTBLs
-                            where h.id == _app.hostID
+                            where h.id == _App.hostID
                             select h).ToList().Single();
 
 
-                host.id = _app.hostID;
-                host.hostname = _app.hostname();
-                host.hostType = _app.hostType;
+                host.id = _App.hostID;
+                host.hostname = _App.hostname();
+                host.hostType = _App.hostType;
                 host.stat = false;
 
                 db.SubmitChanges();
@@ -459,7 +459,7 @@ namespace SSFGlasses
           //  try
             {
                
-                _app.MBmaster.ReadHoldingRegister(0, 0, (ushort)address, (ushort)size);
+                _App.MBmaster.ReadHoldingRegister(0, 0, (ushort)address, (ushort)size);
              
 
             }
@@ -475,7 +475,7 @@ namespace SSFGlasses
             try
             {
                
-                _app.MBmaster.ReadCoils(0, 0, (ushort)address, (ushort)size);
+                _App.MBmaster.ReadCoils(0, 0, (ushort)address, (ushort)size);
 
 
             }
@@ -506,7 +506,7 @@ namespace SSFGlasses
                 ushort address = ReadStartAdr((StartAddress).ToString());
                
                 MBmaster.WriteSingleRegister(3, 0, address , data2);
-                _app.data = data2;
+                _App.data = data2;
                 ShowAs();
             }
            catch
@@ -545,8 +545,8 @@ namespace SSFGlasses
 
         public static void makeDeviceEnable()
         {
-            _app.WriteOnRegister(10, 0);
-            _app.WriteOnRegister(11, 1);
+            _App.WriteOnRegister(10, 0);
+            _App.WriteOnRegister(11, 1);
 
         }
 
@@ -649,12 +649,12 @@ namespace SSFGlasses
                 string ip  = catchedIP;
                 MBmaster = new Master(ip, 502);
                 MBmaster.OnResponseData += new ModbusTCP.Master.ResponseData(MBmaster_OnResponseData);
-                _app.Delta = true;
+                _App.Delta = true;
                 return true;
             }
             catch (SystemException error)
             {
-                _app.Delta = false;
+                _App.Delta = false;
 
                 if (MessageBox.Show("اتصال به دستگاه شکست خورد\nخطای برگشت داده شده:\n" + error.Message + "\n\nبرای تلاش دوباره کلیک کنید", "Fatal Error - ModBus", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     DeltaConnect();
@@ -705,11 +705,11 @@ namespace SSFGlasses
             {
 
          
-            string Page3 = _app.getStringFRomUrl("http://" + _app.ip_ssf_console+"/3");
-            string output = _app.getBetween(Page3, "<body>", "</body");
+            string Page3 = _App.getStringFRomUrl("http://" + _App.ip_ssf_console+"/3");
+            string output = _App.getBetween(Page3, "<body>", "</body");
             for(int i=0;i<output.Length;i++)
             {
-                _app.Sensors[i] = output[i] == '1' ? false : true;
+                _App.Sensors[i] = output[i] == '1' ? false : true;
             }
                 return true;
             }
@@ -741,7 +741,7 @@ namespace SSFGlasses
 
                 //}
 
-                _app._Counter = 0;
+                _App._Counter = 0;
                     ///n;
                 
 
@@ -866,10 +866,10 @@ namespace SSFGlasses
 
         public static bool LoadColumnModbus(int col)
         {
-            if (_app.Delta)
+            if (_App.Delta)
             {
 
-                _app.WriteOnRegister(100, (byte)col);
+                _App.WriteOnRegister(100, (byte)col);
                 return true;
             }
             if (DeviceDoesntConnected())
@@ -881,7 +881,7 @@ namespace SSFGlasses
         public static bool LoadCellModbus(RackTBL rack, int cell,bool load=true)
         {
           
-            if (_app.Delta)
+            if (_App.Delta)
             {
  
                 int row = rack.y;
@@ -897,11 +897,11 @@ namespace SSFGlasses
                     x--;
                 }
                
-                _app.WriteOnRegister(100, (byte)x);
+                _App.WriteOnRegister(100, (byte)x);
                 if (load)
-                    _app.WriteOnRegister(102, (byte)y);
+                    _App.WriteOnRegister(102, (byte)y);
                 else
-                    _app.WriteOnRegister(101, (byte)y);
+                    _App.WriteOnRegister(101, (byte)y);
 
                
 
@@ -931,12 +931,12 @@ namespace SSFGlasses
             }
             
              MessageBox.Show("y=" + y + " x: "+ x);
-            _app.send("JC=1");
-            _app.send("DC=1");
+            _App.send("JC=1");
+            _App.send("DC=1");
             if (mode == "load")
             {
-                bool c = _app.send("ROW=" + x);
-                bool r = _app.send("CLL=" + y);
+                bool c = _App.send("ROW=" + x);
+                bool r = _App.send("CLL=" + y);
                // _variables.newCommand = true;
                //_variables. target = x;
                // _variables.targetDoor = y;
@@ -949,8 +949,8 @@ namespace SSFGlasses
             }
             else
             {
-                bool c = _app.send("ROW=" + x);
-                 bool r = _app.send("COL=" + y);
+                bool c = _App.send("ROW=" + x);
+                 bool r = _App.send("COL=" + y);
                 //_variables .newCommand = true;
                 //_variables.target = x;
                 //_variables.targetDoor = y;
@@ -1217,7 +1217,7 @@ namespace SSFGlasses
                              where u.id == p
                              select u).ToList().Single();
 
-                string path= _app.programWorkingPath + "\\brand\\" + brand.id + ".jpg";
+                string path= _App.programWorkingPath + "\\brand\\" + brand.id + ".jpg";
                 //MessageBox.Show(path);
                 if ( File.Exists(path) )
                 {
@@ -1318,7 +1318,7 @@ namespace SSFGlasses
         public static Bitmap brandPhoto( int id )
         {
 
-            string path = _app.programWorkingPath + "\\brand\\";
+            string path = _App.programWorkingPath + "\\brand\\";
 
             if ( Directory.Exists(path) == false )
             {
@@ -1357,7 +1357,7 @@ namespace SSFGlasses
         {
             LinqDatabaseDataContext db=new LinqDatabaseDataContext();
             var kala=db.KalaTBLs.Where(x=>x.id== id).SingleOrDefault();
-            string path = _app.programWorkingPath + "\\kala\\";
+            string path = _App.programWorkingPath + "\\kala\\";
 
             if ( Directory.Exists(path) == false )
             {
@@ -1397,7 +1397,7 @@ namespace SSFGlasses
         {
             LinqDatabaseDataContext db=new LinqDatabaseDataContext();
             var kala=db.KalaTBLs.Where(x=>x.id== id).SingleOrDefault();
-            string path = _app.programWorkingPath + "\\kala\\";
+            string path = _App.programWorkingPath + "\\kala\\";
 
             if ( Directory.Exists(path) == false )
             {
@@ -1442,7 +1442,7 @@ namespace SSFGlasses
             try
             {
 
-                LinqDatabaseDataContext db = new LinqDatabaseDataContext(_app.connection);
+                LinqDatabaseDataContext db = new LinqDatabaseDataContext(_App.connection);
                 var q2 = (from r in db.RackTBLs
                           where r.id == rackid
                           select r).ToList().Single();
@@ -1463,7 +1463,7 @@ namespace SSFGlasses
 
         public static void SystemError( string str, string title = "خطایی رخ داد" )
         {
-            _app.playVoice("warning");
+            _App.playVoice("warning");
             MessageBox.Show(str, title, MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign);
         }
 
@@ -1505,28 +1505,28 @@ namespace SSFGlasses
                 }
 
 
-                _app.capacity =(int) cap;
+                _App.capacity =(int) cap;
                 //_variables.free = (int)cap - full;
-                _app.programName = setup.programName;
-                _app.security = setup.securityType;
-                _app.programVersion = setup.version;
-                _app.gridCount = ( int ) setup.gridCount;
-                _app.CellManuallySet = ( bool ) setup.manualCellSet;
-                _app.programTag = setup.tag;
-                _app.documentMaximumCheckTime = ( int ) setup.readMaxTime;
-                _app.officeEndTime = setup.endTime;
-                _app.officeStartTime = setup.startTime;
-                _app.thursdayisHolyday = ( bool ) setup.thursday;
-                _app.programWorkingPath = setup.programWorkingPath;
-                _app.smsLogin = ( int ) setup.smslogin;
-                _app.smsTemp = ( bool ) setup.smsTemp;
-                _app.smsRack90 = ( bool ) setup.smsRack90;
-                _app.saveRegnameFP = ( bool ) setup.regNameFP;
+                _App.programName = setup.programName;
+                _App.security = setup.securityType;
+                _App.programVersion = setup.version;
+                _App.gridCount = ( int ) setup.gridCount;
+                _App.CellManuallySet = ( bool ) setup.manualCellSet;
+                _App.programTag = setup.tag;
+                _App.documentMaximumCheckTime = ( int ) setup.readMaxTime;
+                _App.officeEndTime = setup.endTime;
+                _App.officeStartTime = setup.startTime;
+                _App.thursdayisHolyday = ( bool ) setup.thursday;
+                _App.programWorkingPath = setup.programWorkingPath;
+                _App.smsLogin = ( int ) setup.smslogin;
+                _App.smsTemp = ( bool ) setup.smsTemp;
+                _App.smsRack90 = ( bool ) setup.smsRack90;
+                _App.saveRegnameFP = ( bool ) setup.regNameFP;
                 try
                 {
                   
-                    _app.CurrentRack = db.RackTBLs.FirstOrDefault();
-                    _app.ip_ssf_console = _app.CurrentRack.ip;
+                    _App.CurrentRack = db.RackTBLs.FirstOrDefault();
+                    _App.ip_ssf_console = _App.CurrentRack.ip;
 
                 }
                 catch 
@@ -1537,34 +1537,34 @@ namespace SSFGlasses
               
 
 
-                _app.tempMax = ( int ) setup.tempMax;
-                _app.y = db.RackTBLs.Where(x => x.id == 1).Select(x => x.x).Single();
-                _app.x = db.RackTBLs.Where(x => x.id == 1).Select(x => x.x).Single();
+                _App.tempMax = ( int ) setup.tempMax;
+                _App.y = db.RackTBLs.Where(x => x.id == 1).Select(x => x.x).Single();
+                _App.x = db.RackTBLs.Where(x => x.id == 1).Select(x => x.x).Single();
 
 
 
-                if ( _app.fatekConnecion == false )
-                    _app.fatekConnecion = fatekTryConnect();
+                if ( _App.fatekConnecion == false )
+                    _App.fatekConnecion = fatekTryConnect();
 
 
-                _app.time = DateTime.Now.ToString("HH:mm:ss");
+                _App.time = DateTime.Now.ToString("HH:mm:ss");
                 System.Globalization.PersianCalendar pc = new System.Globalization.PersianCalendar();
 
                 DateTime todayDateTime = DateTime.Now;
-                _app.date = pc.GetYear(todayDateTime) + "/" + ( pc.GetMonth(todayDateTime).ToString().Length == 1 ? "0" : "" ) + pc.GetMonth(todayDateTime) + "/" + ( pc.GetDayOfMonth(todayDateTime).ToString().Length == 1 ? "0" : "" ) + pc.GetDayOfMonth(todayDateTime);
+                _App.date = pc.GetYear(todayDateTime) + "/" + ( pc.GetMonth(todayDateTime).ToString().Length == 1 ? "0" : "" ) + pc.GetMonth(todayDateTime) + "/" + ( pc.GetDayOfMonth(todayDateTime).ToString().Length == 1 ? "0" : "" ) + pc.GetDayOfMonth(todayDateTime);
 
 
 
 
 
 
-                if ( Directory.Exists(_app.programWorkingPath) == false )
+                if ( Directory.Exists(_App.programWorkingPath) == false )
                 {
-                    Directory.CreateDirectory(_app.programWorkingPath);
+                    Directory.CreateDirectory(_App.programWorkingPath);
                 }
 
                 numberOfMessageUpdate();
-                _app.rackNo = ( int ) rack.Count();
+                _App.rackNo = ( int ) rack.Count();
             }
             catch
             {
@@ -1596,15 +1596,15 @@ namespace SSFGlasses
         {
             if (MessageBox.Show("اتصال با دستگاه برقرار نیست\nآیا میخواهید هم اکنون متصل شوید؟","Modbus",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation)==DialogResult.Yes)
             {
-               return  _app.DeltaConnect();
+               return  _App.DeltaConnect();
             }
             return false;
         }
         public static bool JackOpen(int jack_number)
         {
-            if (_app.Delta)
+            if (_App.Delta)
             {
-                _app.WriteOnCoil(jack_number + _app.JACK_START_ADDRESS - 1, true);
+                _App.WriteOnCoil(jack_number + _App.JACK_START_ADDRESS - 1, true);
                 return true;
             }
 
@@ -1614,9 +1614,9 @@ namespace SSFGlasses
 
         public static bool JackClose(int jack_number)
         {
-            if (_app.Delta)
+            if (_App.Delta)
             {
-                _app.WriteOnCoil(jack_number + _app.JACK_START_ADDRESS - 1, false);
+                _App.WriteOnCoil(jack_number + _App.JACK_START_ADDRESS - 1, false);
                 return true;
             }
 
@@ -1627,10 +1627,10 @@ namespace SSFGlasses
 
         public static bool DoorOpen(int door_number)
         {
-            if (_app.Delta)
+            if (_App.Delta)
             {
 
-                _app.WriteOnCoil(door_number + _app.DOOR_START_ADDRESS - 1, true);
+                _App.WriteOnCoil(door_number + _App.DOOR_START_ADDRESS - 1, true);
                 return true;
             }
 
@@ -1640,9 +1640,9 @@ namespace SSFGlasses
 
         public static bool DoorClose(int door_number)
         {
-            if (_app.Delta)
+            if (_App.Delta)
             {
-                _app.WriteOnCoil(door_number + _app.DOOR_START_ADDRESS - 1, false);
+                _App.WriteOnCoil(door_number + _App.DOOR_START_ADDRESS - 1, false);
                 return true;
             }
 
@@ -1719,7 +1719,7 @@ namespace SSFGlasses
         {
             try
             {
-                Thread tr = new Thread(_app.internetCheck2);
+                Thread tr = new Thread(_App.internetCheck2);
                 tr.Start();
                 var sendServiceClient = new SendServiceClient();
                 long[] recId = null;
@@ -1767,7 +1767,7 @@ namespace SSFGlasses
 
         public static string getIP()
         {
-            return Dns.GetHostEntry(_app.hostname()).AddressList [ 0 ].ToString();
+            return Dns.GetHostEntry(_App.hostname()).AddressList [ 0 ].ToString();
         }
 
 
@@ -1776,15 +1776,15 @@ namespace SSFGlasses
             try
             {
 
-                string temp = (string)(_app.facon.GetItem(_app.faconPath, "R1018"));
+                string temp = (string)(_App.facon.GetItem(_App.faconPath, "R1018"));
                 int dama = Int32.Parse(temp);
-                if ( dama >= _app.tempMax && _app.tempError == false )
+                if ( dama >= _App.tempMax && _App.tempError == false )
                 {
-                    _app.tempError = true;
-                    LinqDatabaseDataContext db = new LinqDatabaseDataContext(_app.connection);
-                    string prompt = " دمای دستگاه در تاریخ " + _app.date + " و ساعت " + _app.time + " از دمای مجاز(" + _app.tempMax + "° C) عبور کرد.\r\n\r\n@SanatFarzanegan";
-                    _app.sendSMS(_app.backUpMobileNumber, prompt + "\r\nمحل نصب: " + _app.programTag);
-                    _app.SystemError(prompt);
+                    _App.tempError = true;
+                    LinqDatabaseDataContext db = new LinqDatabaseDataContext(_App.connection);
+                    string prompt = " دمای دستگاه در تاریخ " + _App.date + " و ساعت " + _App.time + " از دمای مجاز(" + _App.tempMax + "° C) عبور کرد.\r\n\r\n@SanatFarzanegan";
+                    _App.sendSMS(_App.backUpMobileNumber, prompt + "\r\nمحل نصب: " + _App.programTag);
+                    _App.SystemError(prompt);
                     MessageTBL msg = new MessageTBL();
                     msg.type = "هشدار سیستم";
                     msg.title = prompt;
@@ -1792,11 +1792,11 @@ namespace SSFGlasses
                     msg.archive = false;
                     msg.docoutid = -1;
 
-                    msg.timestamp = _app.time + " - " + _app.date;
+                    msg.timestamp = _App.time + " - " + _App.date;
                     db.MessageTBLs.InsertOnSubmit(msg);
 
                     db.SubmitChanges();
-                    _app.numberOfMessageUpdate();
+                    _App.numberOfMessageUpdate();
 
                 }
 
@@ -1813,7 +1813,7 @@ namespace SSFGlasses
             try
             {
 
-                string cellstr = (string)(_app.facon.GetItem(_app.faconPath, "C0"));
+                string cellstr = (string)(_App.facon.GetItem(_App.faconPath, "C0"));
                 int cell = Int32.Parse(cellstr);
                 int currectCell = (cell / (int)4) + 1;
                 return currectCell;
@@ -1834,8 +1834,8 @@ namespace SSFGlasses
         {
             try
             {
-                _app.facon.SetItem(_app.faconPath, regFingerSetOperation, "2"); // شروع عملیات چک اثرانگشت
-                string read = (string)(_app.facon.GetItem(_app.faconPath, regFingerPrintID)); // شناسه اثرانگشت جدید
+                _App.facon.SetItem(_App.faconPath, regFingerSetOperation, "2"); // شروع عملیات چک اثرانگشت
+                string read = (string)(_App.facon.GetItem(_App.faconPath, regFingerPrintID)); // شناسه اثرانگشت جدید
                 return read;
             }
             catch
@@ -1848,7 +1848,7 @@ namespace SSFGlasses
 
         public static int howManOnline()
         {
-            LinqDatabaseDataContext db = new LinqDatabaseDataContext(_app.connection);
+            LinqDatabaseDataContext db = new LinqDatabaseDataContext(_App.connection);
             try
             {
                 var hosts = from h in db.HostTBLs
@@ -1875,40 +1875,40 @@ namespace SSFGlasses
 
         public static string addFinger() // افزودن اثرانگشت
         {
-            if ( _app.hostType != "Server" ) return null;
-            _app.facon.SetItem(_app.faconPath, "R260", "4");
-            _app.facon.SetItem(_app.faconPath, regFingerSetOperation, "1"); // شروع عملیات ثبت اثرانگشت
+            if ( _App.hostType != "Server" ) return null;
+            _App.facon.SetItem(_App.faconPath, "R260", "4");
+            _App.facon.SetItem(_App.faconPath, regFingerSetOperation, "1"); // شروع عملیات ثبت اثرانگشت
 
             try
             {
-                string read= (string)(_app.facon.GetItem(_app.faconPath, regAddOperation )); // چک اول
+                string read= (string)(_App.facon.GetItem(_App.faconPath, regAddOperation )); // چک اول
                 int pass = Int32.Parse(read);
                 if ( pass < 1 )
                 {
-                    _app.SystemError("سنسور اثرانگشت یافت نشد");
+                    _App.SystemError("سنسور اثرانگشت یافت نشد");
                     return null;
                 }
                 if ( pass >= 3 )
                 {
                     if ( pass == 3 )
                         MessageBox.Show("خواندن اثر انگشت در مرحله اول پاس شد");
-                    read = ( string ) ( _app.facon.GetItem(_app.faconPath, regAddOperation) ); // چک دوم
+                    read = ( string ) ( _App.facon.GetItem(_App.faconPath, regAddOperation) ); // چک دوم
                     pass = Int32.Parse(read);
                     if ( pass >= 15 )
                     {
                         if ( pass == 15 )
                             MessageBox.Show("خواندن اثر انگشت در مرحله دوم پاس شد");
-                        read = ( string ) ( _app.facon.GetItem(_app.faconPath, regAddOperation) ); // مقایسه نتیجه اول با دوم
+                        read = ( string ) ( _App.facon.GetItem(_App.faconPath, regAddOperation) ); // مقایسه نتیجه اول با دوم
                         pass = Int32.Parse(read);
                         if ( pass >= 127 )
                         {
                             MessageBox.Show("ثبت اثر انگشت جدید با موفقیت انجام شد");
-                            read = ( string ) ( _app.facon.GetItem(_app.faconPath, regFingerPrintID) ); // شناسه اثرانگشت جدید
+                            read = ( string ) ( _App.facon.GetItem(_App.faconPath, regFingerPrintID) ); // شناسه اثرانگشت جدید
                             return read;
                         }
                         else
                         {
-                            _app.SystemError("عدم مطابقت در اثرانگشت های وارد شده");
+                            _App.SystemError("عدم مطابقت در اثرانگشت های وارد شده");
                             return null;
                         }
                     }
@@ -1917,21 +1917,21 @@ namespace SSFGlasses
                         if ( MessageBox.Show("اسکن اثر انگشت شکست خورد", "", MessageBoxButtons.RetryCancel) == DialogResult.Cancel )
                             return null;
                         else
-                            return _app.addFinger();
+                            return _App.addFinger();
                     }
                 }
                 else
                     if ( MessageBox.Show("اسکن اثر انگشت شکست خورد", "", MessageBoxButtons.RetryCancel) == DialogResult.Cancel )
                     return null;
                 else
-                    return _app.addFinger();
+                    return _App.addFinger();
             }
             catch
             {
 
             }
 
-            _app.facon.SetItem(_app.faconPath, "R260", "2");
+            _App.facon.SetItem(_App.faconPath, "R260", "2");
             return null;
         }
 
@@ -1976,7 +1976,7 @@ namespace SSFGlasses
             }
             catch
             {
-                _app.SystemError("اینترنت قطع است\r\nفرایند ارسال اس ام اس نیاز به اتصال اینترنت دارد");
+                _App.SystemError("اینترنت قطع است\r\nفرایند ارسال اس ام اس نیاز به اتصال اینترنت دارد");
             }
         }
 
@@ -1984,14 +1984,14 @@ namespace SSFGlasses
 
         public static void startMove( int cell, int rackid )
         {
-            if ( _app.hostType != "Server" ) return;
+            if ( _App.hostType != "Server" ) return;
             try
             {
-                _app.facon.SetItem(_app.faconPath, "M401", "0");
+                _App.facon.SetItem(_App.faconPath, "M401", "0");
             }
             catch { }
             //Thread.Sleep(100);
-            LinqDatabaseDataContext db = new LinqDatabaseDataContext(_app.connection);
+            LinqDatabaseDataContext db = new LinqDatabaseDataContext(_App.connection);
 
             var rack = (from r in db.RackTBLs
                         where r.id == rackid
@@ -2004,10 +2004,10 @@ namespace SSFGlasses
             //MessageBox.Show(String.Format("x:{0} y:{1} cell:{2} ",x,y,cell));
             try
             {
-                _app.facon.SetItem(_app.faconPath, "R2000", "1");
-                _app.facon.SetItem(_app.faconPath, "R2001", x.ToString());
-                _app.facon.SetItem(_app.faconPath, "R2002", y.ToString());
-                _app.facon.SetItem(_app.faconPath, "M401", "1");
+                _App.facon.SetItem(_App.faconPath, "R2000", "1");
+                _App.facon.SetItem(_App.faconPath, "R2001", x.ToString());
+                _App.facon.SetItem(_App.faconPath, "R2002", y.ToString());
+                _App.facon.SetItem(_App.faconPath, "M401", "1");
 
             }
             catch
@@ -2019,15 +2019,15 @@ namespace SSFGlasses
 
         public static void closeDoor()
         {
-            _app.facon.SetItem(_app.faconPath, "R260", "1");
+            _App.facon.SetItem(_App.faconPath, "R260", "1");
             try
             {
-                _app.facon.SetItem(_app.faconPath, "T200", "60");
-                _app.facon.SetItem(_app.faconPath, "M90", "0");
-                _app.facon.SetItem(_app.faconPath, "R250", "5");
+                _App.facon.SetItem(_App.faconPath, "T200", "60");
+                _App.facon.SetItem(_App.faconPath, "M90", "0");
+                _App.facon.SetItem(_App.faconPath, "R250", "5");
 
-                _app.facon.SetItem(_app.faconPath, "R220", "12336");
-                _app.facon.SetItem(_app.faconPath, "R221", "12336");
+                _App.facon.SetItem(_App.faconPath, "R220", "12336");
+                _App.facon.SetItem(_App.faconPath, "R221", "12336");
 
 
             }
@@ -2035,17 +2035,17 @@ namespace SSFGlasses
             {
 
             }
-            _app.facon.SetItem(_app.faconPath, "R260", "2");
+            _App.facon.SetItem(_App.faconPath, "R260", "2");
         }
 
         public static void resetJaygah()
         {
-            _app.playVoice("warning");
+            _App.playVoice("warning");
             MessageBox.Show("جایگاه مجدد راه اندازی میشود");
 
-            _app.facon.SetItem(_app.faconPath, "M91", "1");
+            _App.facon.SetItem(_App.faconPath, "M91", "1");
             Thread.Sleep(1000);
-            _app.facon.SetItem(_app.faconPath, "M91", "0");
+            _App.facon.SetItem(_App.faconPath, "M91", "0");
 
 
         }
@@ -2057,12 +2057,12 @@ namespace SSFGlasses
             //  string r220 = string.Concat((string)(_variables.facon.GetItem(_variables.faconPath, "R220")));
 
 
-            string r220 = string.Concat((string)(_app.facon.GetItem(_app.faconPath, "R220")));
-            string r221 = string.Concat((string)(_app.facon.GetItem(_app.faconPath, "R221")));
-            string r250 = string.Concat((string)(_app.facon.GetItem(_app.faconPath, "R250")));
+            string r220 = string.Concat((string)(_App.facon.GetItem(_App.faconPath, "R220")));
+            string r221 = string.Concat((string)(_App.facon.GetItem(_App.faconPath, "R221")));
+            string r250 = string.Concat((string)(_App.facon.GetItem(_App.faconPath, "R250")));
             if ( r220.CompareTo("12336") != 0 && r220.CompareTo("0") != 0 )
             {
-                _app.facon.SetItem(_app.faconPath, "R250", "5");
+                _App.facon.SetItem(_App.faconPath, "R250", "5");
                 Thread.Sleep(500);
                 //_variables.facon.SetItem(_variables.faconPath, "R220", "12336");
                 //_variables.facon.SetItem(_variables.faconPath, "R221", "12336");
@@ -2100,16 +2100,16 @@ namespace SSFGlasses
 
         public static void masterDoorOpen()
         {
-            if ( _app.hostType != "Server" ) return;
+            if ( _App.hostType != "Server" ) return;
             // MessageBox.Show("Boom!!");
-            _app.facon.SetItem(_app.faconPath, "R260", "1");
+            _App.facon.SetItem(_App.faconPath, "R260", "1");
             try
             {
 
-                _app.facon.SetItem(_app.faconPath, "M48", "1");
+                _App.facon.SetItem(_App.faconPath, "M48", "1");
 
                 Thread.Sleep(2000);
-                _app.facon.SetItem(_app.faconPath, "M48", "0");
+                _App.facon.SetItem(_App.faconPath, "M48", "0");
 
 
 
@@ -2122,7 +2122,7 @@ namespace SSFGlasses
             {
 
             }
-            _app.facon.SetItem(_app.faconPath, "R260", "2");
+            _App.facon.SetItem(_App.faconPath, "R260", "2");
         }
 
 
@@ -2145,20 +2145,20 @@ namespace SSFGlasses
 
         public static void doorOpen_facon() // facon
         {
-            if ( _app.hostType != "Server" ) return;
+            if ( _App.hostType != "Server" ) return;
 
-            _app.facon.SetItem(_app.faconPath, "R260", "1");
+            _App.facon.SetItem(_App.faconPath, "R260", "1");
             try
             {
                 //_variables.facon.SetItem(_variables.faconPath, "T200", "60");
-                _app.facon.SetItem(_app.faconPath, "R250", "4");
-                _app.facon.SetItem(_app.faconPath, "M90", "1");
+                _App.facon.SetItem(_App.faconPath, "R250", "4");
+                _App.facon.SetItem(_App.faconPath, "M90", "1");
                 Thread.Sleep(1000);
-                _app.facon.SetItem(_app.faconPath, "M90", "0");
+                _App.facon.SetItem(_App.faconPath, "M90", "0");
                 Thread.Sleep(1000);
-                _app.facon.SetItem(_app.faconPath, "R250", "4");
-                _app.facon.SetItem(_app.faconPath, "R220", "12336");
-                _app.facon.SetItem(_app.faconPath, "R221", "12336");
+                _App.facon.SetItem(_App.faconPath, "R250", "4");
+                _App.facon.SetItem(_App.faconPath, "R220", "12336");
+                _App.facon.SetItem(_App.faconPath, "R221", "12336");
 
 
 
@@ -2169,7 +2169,7 @@ namespace SSFGlasses
             {
 
             }
-            _app.facon.SetItem(_app.faconPath, "R260", "2");
+            _App.facon.SetItem(_App.faconPath, "R260", "2");
         }
 
         public static string newRFID { get; set; }

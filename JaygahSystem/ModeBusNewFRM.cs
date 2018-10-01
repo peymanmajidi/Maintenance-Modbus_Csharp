@@ -46,9 +46,9 @@ namespace SSFGlasses
                 btnConnect.Text = "CNT";
                 try
                 {
-                    _app.MBmaster.Dispose();
-                    _app.MBmaster = null;
-                    _app.Delta = false;
+                    _App.MBmaster.Dispose();
+                    _App.MBmaster = null;
+                    _App.Delta = false;
                     timer1.Enabled = false; ;
                 }
                 catch { }
@@ -58,7 +58,7 @@ namespace SSFGlasses
             }
 
             this.Cursor = Cursors.WaitCursor;
-            if (_app.DeltaConnect(txtConsoleIP.Text))
+            if (_App.DeltaConnect(txtConsoleIP.Text))
             {
                 btnConnect.Text = " DIS";
                 //Log("Rack(" + txtConsoleIP.Text + ") Succesfully Connected_");
@@ -76,33 +76,33 @@ namespace SSFGlasses
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            _app.GenerateRegister(2000);
+            _App.GenerateRegister(2000);
 
             int index = cmbRack.SelectedIndex;
-            lblCounter.Text = _app.counters[index].ToString();
+            lblCounter.Text = _App.counters[index].ToString();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (_app.Delta)
+            if (_App.Delta)
             {
-                _app.WriteOnRegister(CurrentRack.column,(byte) numCol.Value);
-                _app.WriteOnRegister(CurrentRack.door, (byte)numDoor.Value);
+                _App.WriteOnRegister(CurrentRack.column,(byte) numCol.Value);
+                _App.WriteOnRegister(CurrentRack.door, (byte)numDoor.Value);
 
 
                 //added code
                 if(radioLoad.Checked)
-                    _app.WriteOnRegister(CurrentRack.load, 1);
+                    _App.WriteOnRegister(CurrentRack.load, 1);
                 else
-                    _app.WriteOnRegister(CurrentRack.load, 0);
+                    _App.WriteOnRegister(CurrentRack.load, 0);
 
                 //
 
 
                 return;
             }
-            if (_app.DeviceDoesntConnected())
+            if (_App.DeviceDoesntConnected())
                 button1_Click(null, null);
 
         }

@@ -62,7 +62,7 @@ namespace SSFGlasses
             //
             cmbRack.SelectedIndex = 0;
             //refreshTimer_Tick(sender, e);
-            txtConsoleIP.Text = _app.ip_ssf_console;
+            txtConsoleIP.Text = _App.ip_ssf_console;
             // txtLog.Focus();
             txtLog.Text = @"operator@superuser#";
 
@@ -82,15 +82,15 @@ namespace SSFGlasses
         LinqDatabaseDataContext db = new LinqDatabaseDataContext();
         private void button109_Click(object sender, EventArgs e)
         {
-            if (_app.Delta)
+            if (_App.Delta)
             {
-                _app.WriteOnRegister(CurrentRack.column, (byte)0);
-                _app.WriteOnRegister(CurrentRack.door, (byte)0);
+                _App.WriteOnRegister(CurrentRack.column, (byte)0);
+                _App.WriteOnRegister(CurrentRack.door, (byte)0);
 
 
                 return;
             }
-            if (_app.DeviceDoesntConnected())
+            if (_App.DeviceDoesntConnected())
                 button1_Click(null, null);
 
 
@@ -99,21 +99,21 @@ namespace SSFGlasses
 
         private void button24_Click(object sender, EventArgs e)
         {
-            if (_app.Delta)
+            if (_App.Delta)
             {
-                _app.WriteOnRegister(CurrentRack.column, (byte)0);
-                _app.WriteOnRegister(CurrentRack.door, (byte)0);
+                _App.WriteOnRegister(CurrentRack.column, (byte)0);
+                _App.WriteOnRegister(CurrentRack.door, (byte)0);
 
 
                 return;
             }
-            if (_app.DeviceDoesntConnected())
+            if (_App.DeviceDoesntConnected())
                 button1_Click(null, null);
         }
 
         private void button110_Click(object sender, EventArgs e)
         {
-            if (_app.send("DC=1"))
+            if (_App.send("DC=1"))
                 Log("All of Doors CLOSED");
             else
                 Log(Error: true);
@@ -122,34 +122,34 @@ namespace SSFGlasses
 
         public bool OpenDoor(int door)
         {
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
             return false;
         }
 
         public bool CloseDoor(int door)
         {
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
             return false;
         }
 
 
         public bool OpenJack(int jack)
         {
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
             return false;
         }
 
         public bool CloseJack(int jack)
         {
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
-            _app.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.column, (byte)0);
             return false;
         }
 
@@ -489,9 +489,9 @@ namespace SSFGlasses
                 btnConnect.Text = "Connect";
                 try
                 {
-                    _app.MBmaster.Dispose();
-                    _app.MBmaster = null;
-                    _app.Delta = false;
+                    _App.MBmaster.Dispose();
+                    _App.MBmaster = null;
+                    _App.Delta = false;
                     timer1.Enabled = false; ;
                     picLED.Image = Properties.Resources.off;
                     Log("Disonnected;");
@@ -504,7 +504,7 @@ namespace SSFGlasses
             }
             Log("Try to Connect [wait] ...");
             this.Cursor = Cursors.WaitCursor;
-            if (_app.DeltaConnect(txtConsoleIP.Text))
+            if (_App.DeltaConnect(txtConsoleIP.Text))
             {
                 btnConnect.Text = "Disonnect";
                 Log("Connected;");
@@ -523,13 +523,13 @@ namespace SSFGlasses
 
         private void btnBrowser_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://" + _app.ip_ssf_console);
+            System.Diagnostics.Process.Start("http://" + _App.ip_ssf_console);
         }
 
         private void button115_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            if (_app.PingHost(txtConsoleIP.Text))
+            if (_App.PingHost(txtConsoleIP.Text))
             {
                 Log("PING successfuly     [ OK ]");
             }
@@ -541,7 +541,7 @@ namespace SSFGlasses
         private void button116_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-            Log(_app.getStringFRomUrl("http://" + _app.ip_ssf_console + "/3"));
+            Log(_App.getStringFRomUrl("http://" + _App.ip_ssf_console + "/3"));
             this.Cursor = Cursors.Default;
         }
 
@@ -556,12 +556,12 @@ namespace SSFGlasses
             try
             {
 
-                _app.GenerateRegister(2000);
+                _App.GenerateRegister(2000);
 
                 int index = cmbRack.SelectedIndex;
 
-                _app.UpdateSensors();
-                var sen = _app.Sensors;
+                _App.UpdateSensors();
+                var sen = _App.Sensors;
                 int i = 0;
                 sensor01.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
                 sensor02.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
@@ -991,7 +991,7 @@ namespace SSFGlasses
 
         private void button67_Click(object sender, EventArgs e)
         {
-            if (_app.send("JC=" + 1))
+            if (_App.send("JC=" + 1))
                 Log("All of Jacks CLOSED");
             else
                 Log(Error: true);
@@ -1008,15 +1008,15 @@ namespace SSFGlasses
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (_app.Delta)
+            if (_App.Delta)
             {
-                _app.WriteOnRegister(CurrentRack.column, (byte)0);
-                _app.WriteOnRegister(CurrentRack.door, (byte)0);
+                _App.WriteOnRegister(CurrentRack.column, (byte)0);
+                _App.WriteOnRegister(CurrentRack.door, (byte)0);
 
 
                 return;
             }
-            if (_app.DeviceDoesntConnected())
+            if (_App.DeviceDoesntConnected())
                 button1_Click(null, null);
         }
 

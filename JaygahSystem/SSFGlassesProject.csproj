@@ -154,7 +154,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="variables.cs" />
+    <Compile Include="_App.cs" />
     <Compile Include="zkemkeeper\CZKEMClass.cs" />
     <EmbeddedResource Include="AboutNe.resx">
       <DependentUpon>AboutNe.cs</DependentUpon>
