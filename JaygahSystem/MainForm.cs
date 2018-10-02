@@ -1037,5 +1037,10 @@ namespace SSFGlasses
         {
 
         }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            new AboutMe().ShowDialog();
+        }
     }
 }
