@@ -286,9 +286,9 @@
             this.lbltitlebar.Location = new System.Drawing.Point(13, 1);
             this.lbltitlebar.Name = "lbltitlebar";
             this.lbltitlebar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lbltitlebar.Size = new System.Drawing.Size(235, 29);
+            this.lbltitlebar.Size = new System.Drawing.Size(358, 29);
             this.lbltitlebar.TabIndex = 372;
-            this.lbltitlebar.Text = "PM Tools";
+            this.lbltitlebar.Text = "RSA Control System";
             this.lbltitlebar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbltitlebar.Click += new System.EventHandler(this.lbltitlebar_Click);
             // 
@@ -1846,7 +1846,7 @@
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(8, 26);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(326, 222);
+            this.pictureBox3.Size = new System.Drawing.Size(326, 206);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
