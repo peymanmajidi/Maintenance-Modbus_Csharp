@@ -20,9 +20,9 @@ namespace SSFGlasses
     class _App
     {
 
-        public  const byte JACK_START_ADDRESS = 1;
-        public  const byte DOOR_START_ADDRESS = 25;
-        public  const byte SENSOR_START_ADDRESS = 50;
+        public const byte JACK_START_ADDRESS = 1;
+        public const byte DOOR_START_ADDRESS = 25;
+        public const byte SENSOR_START_ADDRESS = 50;
 
         public static int _Counter = 0;
 
@@ -30,10 +30,10 @@ namespace SSFGlasses
         public static int priority = 1;
         public static string type = "inbound";
         public static string semat = "تحقیق و توسعه";
-        public static bool canOpen=false;
+        public static bool canOpen = false;
         public static int currentPosition = 8;
         //  public static Direction currentDirection = Direction.RIGHT;
-        public static string programWorkingPath=@"C:\SSFGlasses\";
+        public static string programWorkingPath = @"C:\SSFGlasses\";
 
         public static string date = "تاریخ امروز";
         public static string time = "زمان";
@@ -45,15 +45,15 @@ namespace SSFGlasses
 
         public static int capacity = 0;
         public static int free = 0;
-        public static int rackNo=0;
+        public static int rackNo = 0;
 
 
 
         public static string programName = "نام برنامه";
         public static string programVersion = "نسخه";
 
-        public static string lastlogin="none";
-        public static int visit=0;
+        public static string lastlogin = "none";
+        public static int visit = 0;
 
         public static bool CellManuallySet = false;
         public static int documentMaximumCheckTime = 0;
@@ -70,29 +70,29 @@ namespace SSFGlasses
 
         public static string programTag { get; set; }
 
-        
+
         public static ModbusTCP.Master MBmaster;
         public static void GenerateRegister(int address, int size = 300)
         {
-          //  try
+            //  try
             {
-               
+
                 _App.MBmaster.ReadHoldingRegister(0, 0, (ushort)address, (ushort)size);
-             
+
 
             }
-         //  catch { }
- 
+            //  catch { }
+
         }
 
-  
+
 
 
         public static void GenerateCoil(int address, int size = 200)
         {
             try
             {
-               
+
                 _App.MBmaster.ReadCoils(0, 0, (ushort)address, (ushort)size);
 
 
@@ -114,20 +114,20 @@ namespace SSFGlasses
                 return Convert.ToUInt16(address);
             }
         }
-        public static void WriteOnRegister(ushort StartAddress, 
+        public static void WriteOnRegister(ushort StartAddress,
             byte data)
         {
-           try
+            try
             {
-              
+
                 byte[] data2 = { 0, data };
                 ushort address = ReadStartAdr((StartAddress).ToString());
-               
-                MBmaster.WriteSingleRegister(3, 0, address , data2);
+
+                MBmaster.WriteSingleRegister(3, 0, address, data2);
                 _App.data = data2;
                 ShowAs();
             }
-           catch
+            catch
             {
 
 
@@ -138,12 +138,12 @@ namespace SSFGlasses
         {
             try
             {
-               
+
                 ushort StartAddress = ushort.Parse(StartAddress_int.ToString());
-                
-            //   MessageBox.Show("id:" + 5 + " Unit:" + 0 + " start:" + StartAddress + " data:" + data);
-                MBmaster.WriteSingleCoils(5, 0, StartAddress,data);
-                
+
+                //   MessageBox.Show("id:" + 5 + " Unit:" + 0 + " start:" + StartAddress + " data:" + data);
+                MBmaster.WriteSingleCoils(5, 0, StartAddress, data);
+
             }
             catch
             {
@@ -154,8 +154,8 @@ namespace SSFGlasses
 
         public static string registerValue = null;
         public static byte[] data;
-        public static bool Delta=false;
-        public static bool[] sensors=new bool[21];
+        public static bool Delta = false;
+        public static bool[] sensors = new bool[21];
         public static bool[] doors = new bool[21];
         public static bool[] jacks = new bool[21];
 
@@ -183,10 +183,10 @@ namespace SSFGlasses
 
         public static void ShowAs()
         {
-         // try
+            try
             {
 
-           //      MessageBox.Show("Test show as ...");
+                //      MessageBox.Show("Test show as ...");
 
                 bool[] bits = new bool[1];
                 int[] word = new int[1];
@@ -217,14 +217,14 @@ namespace SSFGlasses
 
                 _App.GetBack = word.ToList();
 
-           //     Sensor_Rota01 = word[100];
-               
+                //     Sensor_Rota01 = word[100];
+
 
                 //    //_variables.Flag = word[10];
                 //    //_variables.Enable = word[11];
                 //    int sub = 2000;
 
-                 //   _App.counters[0] = word[ 2003 - sub];
+                //   _App.counters[0] = word[ 2003 - sub];
                 //    _app.counters[1] = word[2003 - sub];
                 //    _app.counters[2] = word[2007 - sub];
 
@@ -248,7 +248,7 @@ namespace SSFGlasses
 
 
             }
-          // catch
+            catch
             {
 
 
@@ -258,15 +258,15 @@ namespace SSFGlasses
 
 
         }
-        public static int firstBit=99;
+        public static int firstBit = 99;
 
-     
 
-        public static bool DeltaConnect(string catchedIP=null)
+
+        public static bool DeltaConnect(string catchedIP = null)
         {
-           try
+            try
             {
-                string ip  = catchedIP;
+                string ip = catchedIP;
                 MBmaster = new Master(ip, 502);
                 MBmaster.OnResponseData += new ModbusTCP.Master.ResponseData(MBmaster_OnResponseData);
                 _App.Delta = true;
@@ -301,24 +301,24 @@ namespace SSFGlasses
 
 
 
-        
 
 
-        
 
-        public static int gridCount=20;
+
+
+        public static int gridCount = 20;
         public static bool fatekConnecion = false;
         public static bool saveRegnameFP = false;
-        public static string ip_ssf_console= "192.168.1.10";
+        public static string ip_ssf_console = "192.168.1.10";
 
 
 
 
         public static bool DeviceDoesntConnected(string more = null)
         {
-            if (MessageBox.Show("اتصال با دستگاه برقرار نیست\nآیا میخواهید هم اکنون متصل شوید؟","Modbus",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation)==DialogResult.Yes)
+            if (MessageBox.Show("اتصال با دستگاه برقرار نیست\nآیا میخواهید هم اکنون متصل شوید؟", "Modbus", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
-               return  _App.DeltaConnect();
+                return _App.DeltaConnect();
             }
             return false;
         }
@@ -392,6 +392,6 @@ namespace SSFGlasses
 
 
 
-        
+
     }
 }

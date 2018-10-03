@@ -566,7 +566,46 @@ namespace SSFGlasses
 
         private void button117_Click(object sender, EventArgs e)
         {
-            refreshTimer.Enabled = true;
+            //refreshTimer.Enabled = true;
+
+            var sen1 = Convert.ToString(new Random().Next(10,128), 2).Select(s => s.Equals('1')).ToList();
+            var sen2 = Convert.ToString(new Random().Next(0, 255), 2).Select(s => s.Equals('1')).ToList();
+            var sen3 = Convert.ToString(new Random().Next(0, 255), 2).Select(s => s.Equals('1')).ToList();
+
+            for (int j = 0; j < 16 - sen1.Count; j++)
+                sen1.Add(false);
+            for (int j = 0; j < 16 - sen2.Count; j++)
+                sen2.Add(false);
+            for (int j = 0; j < 16 - sen3.Count; j++)
+                sen3.Add(false);
+
+            int i = 0;
+
+            sensor01.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor02.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor03.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor04.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor05.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor06.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor07.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor08.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+            i = 0;
+            sensor09.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor10.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor11.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor12.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor13.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor14.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor15.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor16.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+            i = 0;
+            sensor17.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor18.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor19.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor20.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
+            sensor21.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
+
+
 
         }
 
@@ -580,10 +619,18 @@ namespace SSFGlasses
                 int index = cmbRack.SelectedIndex;
 
                 //_App.UpdateSensors();
-                var sen1 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr], 2 ).Select(s => s.Equals('1')).ToArray();
-                var sen2 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr+1], 2 ).Select(s => s.Equals('1')).ToArray();
-                var sen3 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr+2], 2 ).Select(s => s.Equals('1')).ToArray();
+                var sen1 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr], 2 ).Select(s => s.Equals('1')).ToList();
+                var sen2 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr+1], 2 ).Select(s => s.Equals('1')).ToList();
+                var sen3 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr+2], 2 ).Select(s => s.Equals('1')).ToList();
                 int i = 0;
+
+
+                for (int j = 0; j < 16 - sen1.Count; j++)
+                    sen1.Add(false);
+                for (int j = 0; j < 16 - sen2.Count; j++)
+                    sen2.Add(false);
+                for (int j = 0; j < 16 - sen3.Count; j++)
+                    sen3.Add(false);
 
                 sensor01.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
                 sensor02.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
@@ -593,6 +640,7 @@ namespace SSFGlasses
                 sensor06.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
                 sensor07.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
                 sensor08.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+                i = 0;
                 sensor09.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
                 sensor10.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
                 sensor11.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
@@ -601,6 +649,7 @@ namespace SSFGlasses
                 sensor14.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
                 sensor15.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
                 sensor16.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+                i = 0;
                 sensor17.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
                 sensor18.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
                 sensor19.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
