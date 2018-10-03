@@ -69,6 +69,8 @@ namespace SSFGlasses
             txtConsoleIP.Text = _App.ip_ssf_console;
             // txtLog.Focus();
             txtLog.Text = @"peyman@superuser#";
+            grpDoors.Enabled = grpJacks.Enabled = false;
+
 
 
         }
@@ -519,6 +521,7 @@ namespace SSFGlasses
                     _App.Delta = false;
                     refreshTimer.Enabled = false; ;
                     picLED.Image = Properties.Resources.off;
+                    grpDoors.Enabled = grpJacks.Enabled = false;
                     Log("Disonnected;");
 
                 }
@@ -533,6 +536,7 @@ namespace SSFGlasses
             {
                 btnConnect.Text = "Disonnect";
                 Log("Connected;");
+                grpDoors.Enabled = grpJacks.Enabled = true;
 
                 picLED.Image = Properties.Resources.on;
 
@@ -541,7 +545,7 @@ namespace SSFGlasses
             }
             else
             {
-                // Log("Not Connect", true);
+                 Log("Not Connect";
             }
             this.Cursor = Cursors.Default;
         }
