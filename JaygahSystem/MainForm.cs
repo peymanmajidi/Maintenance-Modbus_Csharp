@@ -36,12 +36,15 @@ namespace SSFGlasses
             public ushort door;
             public ushort column;
             public ushort load;
-            public Rack(ushort c, ushort d, ushort cl, ushort ld)
+            public ushort regSensorAddr;
+            public Rack(ushort c, ushort d, ushort cl, ushort ld, ushort rsa)
             {
                 counter = c;
                 door = d;
                 column = cl;
                 load = ld;
+                regSensorAddr = rsa;
+
             }
 
         };
@@ -52,20 +55,20 @@ namespace SSFGlasses
         {
             _App.MBmaster = new ModbusTCP.Master();
             // changes
-            Racks.Add(new Rack(409, 408, 414, 500));
-            Racks.Add(new Rack(2003, 416, 418, 501));
-            Racks.Add(new Rack(2007, 420, 422, 502));
-            Racks.Add(new Rack(2011, 424, 426, 503));
-            Racks.Add(new Rack(2015, 428, 430, 504));
-            Racks.Add(new Rack(2019, 432, 434, 505));
-            Racks.Add(new Rack(2023, 436, 437, 506));
-            Racks.Add(new Rack(2027, 439, 440, 507));
+            Racks.Add(new Rack(409, 408, 414, 500, 1));
+            Racks.Add(new Rack(2003, 416, 418, 501, 2));
+            Racks.Add(new Rack(2007, 420, 422, 502, 3));
+            Racks.Add(new Rack(2011, 424, 426, 503, 8));
+            Racks.Add(new Rack(2015, 428, 430, 504, 7));
+            Racks.Add(new Rack(2019, 432, 434, 505, 6));
+            Racks.Add(new Rack(2023, 436, 437, 506, 5));
+            Racks.Add(new Rack(2027, 439, 440, 507, 4));
             //
             cmbRack.SelectedIndex = 0;
             //refreshTimer_Tick(sender, e);
             txtConsoleIP.Text = _App.ip_ssf_console;
             // txtLog.Focus();
-            txtLog.Text = @"operator@superuser#";
+            txtLog.Text = @"peyman@superuser#";
 
 
         }
@@ -114,7 +117,7 @@ namespace SSFGlasses
         private void button110_Click(object sender, EventArgs e)
         {
 
-                Log(Error: true);
+            Log(Error: true);
 
         }
 
@@ -177,7 +180,7 @@ namespace SSFGlasses
 
         private void button13_Click(object sender, EventArgs e)
         {
-          
+
             int i = 1;
             if (OpenDoor(door: i))
                 Log("Door number " + i + " OPENED successfuly");
@@ -491,7 +494,7 @@ namespace SSFGlasses
             CloseDoor(door: 21);
         }
 
-     
+
         private void button112_Click(object sender, EventArgs e)
         {
             txtLog.Clear();
@@ -514,7 +517,7 @@ namespace SSFGlasses
                     _App.MBmaster.Dispose();
                     _App.MBmaster = null;
                     _App.Delta = false;
-                    timer1.Enabled = false; ;
+                    refreshTimer.Enabled = false; ;
                     picLED.Image = Properties.Resources.off;
                     Log("Disonnected;");
 
@@ -534,7 +537,7 @@ namespace SSFGlasses
                 picLED.Image = Properties.Resources.on;
 
                 //Log("Rack(" + txtConsoleIP.Text + ") Succesfully Connected_");
-                timer1.Enabled = true;
+                refreshTimer.Enabled = true;
             }
             else
             {
@@ -563,7 +566,7 @@ namespace SSFGlasses
 
         private void button117_Click(object sender, EventArgs e)
         {
-            refreshTimer_Tick(sender, e);
+            refreshTimer.Enabled = true;
 
         }
 
@@ -571,51 +574,55 @@ namespace SSFGlasses
         {
             try
             {
-
-                _App.GenerateRegister(2000);
+                int startAddress = 2000;
+                _App.GenerateRegister(startAddress);
 
                 int index = cmbRack.SelectedIndex;
 
                 //_App.UpdateSensors();
-                //var sen = _App.Sensors;
-                //int i = 0;
-                //sensor01.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor02.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor03.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor04.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor05.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor06.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor07.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor08.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor09.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor10.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor11.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor12.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor13.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor14.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor15.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor16.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor17.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor18.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor19.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor20.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
-                //sensor21.BackColor = sen[i++] == true ? Color.Lime : Color.Gainsboro;
+                var sen1 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr], 2 ).Select(s => s.Equals('1')).ToArray();
+                var sen2 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr+1], 2 ).Select(s => s.Equals('1')).ToArray();
+                var sen3 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr+2], 2 ).Select(s => s.Equals('1')).ToArray();
+                int i = 0;
+
+                sensor01.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor02.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor03.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor04.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor05.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor06.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor07.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor08.BackColor = sen1[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor09.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor10.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor11.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor12.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor13.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor14.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor15.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor16.BackColor = sen2[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor17.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor18.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor19.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor20.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
+                sensor21.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
             }
             catch
             { }
         }
 
+
         private void chkAutoUpdate_Click(object sender, EventArgs e)
         {
-            bool auto = timer1.Enabled;
+            bool auto = refreshTimer.Enabled;
             if (auto)
             {
-                auto = timer1.Enabled = false;
+                auto = refreshTimer.Enabled = false;
                 chkAutoUpdate.Image = SSFGlasses.Properties.Resources.switches;
             }
             else
             {
-                auto = timer1.Enabled = true;
+                auto = refreshTimer.Enabled = true;
                 chkAutoUpdate.Image = SSFGlasses.Properties.Resources.switches_on;
             }
         }
@@ -814,7 +821,7 @@ namespace SSFGlasses
         private void button98_Click(object sender, EventArgs e)
         {
             int jf = 1;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -823,7 +830,7 @@ namespace SSFGlasses
         private void button100_Click(object sender, EventArgs e)
         {
             int jf = 2;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -832,7 +839,7 @@ namespace SSFGlasses
         private void button104_Click(object sender, EventArgs e)
         {
             int jf = 3;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -841,7 +848,7 @@ namespace SSFGlasses
         private void button108_Click(object sender, EventArgs e)
         {
             int jf = 4;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -850,7 +857,7 @@ namespace SSFGlasses
         private void button105_Click(object sender, EventArgs e)
         {
             int jf = 5;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -859,7 +866,7 @@ namespace SSFGlasses
         private void button101_Click(object sender, EventArgs e)
         {
             int jf = 6;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -868,7 +875,7 @@ namespace SSFGlasses
         private void button103_Click(object sender, EventArgs e)
         {
             int jf = 7;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -877,7 +884,7 @@ namespace SSFGlasses
         private void button107_Click(object sender, EventArgs e)
         {
             int jf = 8;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -886,7 +893,7 @@ namespace SSFGlasses
         private void button106_Click(object sender, EventArgs e)
         {
             int jf = 9;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -895,7 +902,7 @@ namespace SSFGlasses
         private void button102_Click(object sender, EventArgs e)
         {
             int jf = 10;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -904,7 +911,7 @@ namespace SSFGlasses
         private void button99_Click(object sender, EventArgs e)
         {
             int jf = 11;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -913,7 +920,7 @@ namespace SSFGlasses
         private void button88_Click(object sender, EventArgs e)
         {
             int jf = 12;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -922,7 +929,7 @@ namespace SSFGlasses
         private void button97_Click(object sender, EventArgs e)
         {
             int jf = 13;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -931,7 +938,7 @@ namespace SSFGlasses
         private void button96_Click(object sender, EventArgs e)
         {
             int jf = 14;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -940,7 +947,7 @@ namespace SSFGlasses
         private void button95_Click(object sender, EventArgs e)
         {
             int jf = 15;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -949,7 +956,7 @@ namespace SSFGlasses
         private void button94_Click(object sender, EventArgs e)
         {
             int jf = 16;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -958,7 +965,7 @@ namespace SSFGlasses
         private void button93_Click(object sender, EventArgs e)
         {
             int jf = 17;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -967,7 +974,7 @@ namespace SSFGlasses
         private void button92_Click(object sender, EventArgs e)
         {
             int jf = 18;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -976,7 +983,7 @@ namespace SSFGlasses
         private void button91_Click(object sender, EventArgs e)
         {
             int jf = 19;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -985,7 +992,7 @@ namespace SSFGlasses
         private void button90_Click(object sender, EventArgs e)
         {
             int jf = 20;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -994,7 +1001,7 @@ namespace SSFGlasses
         private void button89_Click(object sender, EventArgs e)
         {
             int jf = 21;
-            if(CloseJack(jack:jf))
+            if (CloseJack(jack: jf))
                 Log("Jack number " + jf + " CLOSED successfuly");
             else
                 Log(Error: true);
@@ -1007,7 +1014,7 @@ namespace SSFGlasses
 
         private void button67_Click(object sender, EventArgs e)
         {
-                Log(Error: true);
+            Log(Error: true);
         }
 
         private void picLED_Click(object sender, EventArgs e)

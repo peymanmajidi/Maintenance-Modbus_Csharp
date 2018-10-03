@@ -169,7 +169,7 @@
             this.button115 = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.txtConsoleIP = new System.Windows.Forms.TextBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox3.SuspendLayout();
@@ -253,9 +253,9 @@
             this.button117.ForeColor = System.Drawing.Color.Black;
             this.button117.Image = ((System.Drawing.Image)(resources.GetObject("button117.Image")));
             this.button117.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button117.Location = new System.Drawing.Point(922, 17);
+            this.button117.Location = new System.Drawing.Point(842, 17);
             this.button117.Name = "button117";
-            this.button117.Size = new System.Drawing.Size(144, 27);
+            this.button117.Size = new System.Drawing.Size(224, 27);
             this.button117.TabIndex = 302;
             this.button117.Text = "Update sensors";
             this.button117.UseVisualStyleBackColor = false;
@@ -1935,10 +1935,10 @@
             this.txtConsoleIP.Text = "172.16.1.201";
             this.txtConsoleIP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // timer1
+            // refreshTimer
             // 
-            this.timer1.Interval = 2000;
-            this.timer1.Tick += new System.EventHandler(this.refreshTimer_Tick);
+            this.refreshTimer.Interval = 2000;
+            this.refreshTimer.Tick += new System.EventHandler(this.refreshTimer_Tick);
             // 
             // pictureBox5
             // 
@@ -2149,7 +2149,7 @@
         private System.Windows.Forms.TextBox txtConsoleIP;
         private System.Windows.Forms.Button button115;
         private System.Windows.Forms.Button button117;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer refreshTimer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox chkAutoUpdate;
         private System.Windows.Forms.Button button67;

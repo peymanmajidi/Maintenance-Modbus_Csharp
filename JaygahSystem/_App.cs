@@ -176,6 +176,8 @@ namespace SSFGlasses
         public static int Sensor_High = 0;
         public static int Sensor_Low = 0;
         public static int Sensor_Rota01 = 0;
+        public static List<int> GetBack = new List<int>();
+
 
         public static int[] counters = new int[8];
 
@@ -212,8 +214,8 @@ namespace SSFGlasses
                 }
 
 
-    
 
+                _App.GetBack = word.ToList();
 
            //     Sensor_Rota01 = word[100];
                
@@ -222,7 +224,7 @@ namespace SSFGlasses
                 //    //_variables.Enable = word[11];
                 //    int sub = 2000;
 
-                //    _app.counters[0] = word[ 2003 - sub];
+                 //   _App.counters[0] = word[ 2003 - sub];
                 //    _app.counters[1] = word[2003 - sub];
                 //    _app.counters[2] = word[2007 - sub];
 
