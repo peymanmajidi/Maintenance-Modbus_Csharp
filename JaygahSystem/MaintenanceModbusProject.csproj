@@ -72,6 +72,7 @@
     <Reference Include="ModbusTCP">
       <HintPath>G:\_Projects\ProfilerBySSFProject_alpha\ProfilerBySSFProject\bin\Debug - Copy\ModbusTCP.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -154,6 +155,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\JaygahSystem.ServiceReference2.MessageInfo.datasource" />
     <None Include="Properties\DataSources\JaygahSystem.ServiceReference2.MessageInfo1.datasource" />
     <None Include="Properties\Settings.settings">
@@ -550,6 +552,7 @@
     <None Include="Resources\glass.png" />
     <None Include="Resources\glass_hover.png" />
     <None Include="Resources\glass_hover1.png" />
+    <Content Include="bin\Debug\connection_info.txt" />
     <Content Include="BLACK GLASSES.ico" />
     <None Include="Resources\photo_2017-05-25_08-15-36.jpg" />
     <None Include="Resources\off.png" />

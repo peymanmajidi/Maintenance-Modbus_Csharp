@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace SSFGlasses
 {
@@ -53,6 +56,7 @@ namespace SSFGlasses
         Rack CurrentRack;
         private void PMForm_Load(object sender, EventArgs e)
         {
+
             _App.MBmaster = new ModbusTCP.Master();
             // changes
             Racks.Add(new Rack(409, 408, 414, 500, 1));
@@ -64,6 +68,22 @@ namespace SSFGlasses
             Racks.Add(new Rack(2023, 436, 437, 506, 5));
             Racks.Add(new Rack(2027, 439, 440, 507, 4));
             //
+
+            string path = "connection_info.txt";
+            if (File.Exists(path))
+            {
+                var text = File.ReadAllText(path);
+                var data = JObject.Parse(text);
+                var ip = _App.ip_ssf_console = data["IP"].Value<string>();
+                var title = data["AppTitle"].Value<string>();
+
+                lbltitlebar.Text = title;
+                txtConsoleIP.Text = ip;
+            }
+
+
+
+
             cmbRack.SelectedIndex = 0;
             //refreshTimer_Tick(sender, e);
             txtConsoleIP.Text = _App.ip_ssf_console;
@@ -545,7 +565,7 @@ namespace SSFGlasses
             }
             else
             {
-                 Log("Not Connect";
+                 Log("Not Connect");
             }
             this.Cursor = Cursors.Default;
         }

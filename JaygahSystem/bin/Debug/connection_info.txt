@@ -1,0 +1,4 @@
+﻿{
+	"IP" : "192.168.2.222",
+	"AppTitle" : "SSF Controlling Center"
+}

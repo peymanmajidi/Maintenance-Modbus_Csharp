@@ -13,3 +13,4 @@ X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debu
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\SSFGlasses.MainForm.resources
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.exe
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.pdb
+X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\Newtonsoft.Json.dll
