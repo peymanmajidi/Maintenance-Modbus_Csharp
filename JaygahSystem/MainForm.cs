@@ -51,7 +51,7 @@ namespace SSFGlasses
             }
 
         };
-        //
+        bool demo = false;
         List<Rack> Racks = new List<Rack>();
         Rack CurrentRack;
         private void PMForm_Load(object sender, EventArgs e)
@@ -76,9 +76,16 @@ namespace SSFGlasses
                 var data = JObject.Parse(text);
                 var ip = _App.ip_ssf_console = data["IP"].Value<string>();
                 var title = data["AppTitle"].Value<string>();
+                int interval = data["Interval"].Value<int>();
+                if (data["Demo"] != null)
+                {
+                    var demo = data["Demo"].Value<bool>();
+                    this.demo = demo;
+                }
 
                 lbltitlebar.Text = title;
                 txtConsoleIP.Text = ip;
+                refreshTimer.Interval = interval;
             }
 
 
@@ -565,7 +572,7 @@ namespace SSFGlasses
             }
             else
             {
-                 Log("Not Connect");
+                Log("Not Connect");
             }
             this.Cursor = Cursors.Default;
         }
@@ -592,7 +599,13 @@ namespace SSFGlasses
         {
             //refreshTimer.Enabled = true;
 
-            var sen1 = Convert.ToString(new Random().Next(10,128), 2).Select(s => s.Equals('1')).ToList();
+            Demo();
+
+        }
+
+        private void Demo()
+        {
+            var sen1 = Convert.ToString(new Random().Next(10, 128), 2).Select(s => s.Equals('1')).ToList();
             var sen2 = Convert.ToString(new Random().Next(0, 255), 2).Select(s => s.Equals('1')).ToList();
             var sen3 = Convert.ToString(new Random().Next(0, 255), 2).Select(s => s.Equals('1')).ToList();
 
@@ -628,13 +641,15 @@ namespace SSFGlasses
             sensor19.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
             sensor20.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
             sensor21.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
-
-
-
         }
 
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
+            if (demo)
+            {
+                Demo();
+                return;
+            }
             try
             {
                 int startAddress = 2000;
@@ -643,9 +658,9 @@ namespace SSFGlasses
                 int index = cmbRack.SelectedIndex;
 
                 //_App.UpdateSensors();
-                var sen1 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr], 2 ).Select(s => s.Equals('1')).ToList();
-                var sen2 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr+1], 2 ).Select(s => s.Equals('1')).ToList();
-                var sen3 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr+2], 2 ).Select(s => s.Equals('1')).ToList();
+                var sen1 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr], 2).Select(s => s.Equals('1')).ToList();
+                var sen2 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr + 1], 2).Select(s => s.Equals('1')).ToList();
+                var sen3 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr + 2], 2).Select(s => s.Equals('1')).ToList();
                 int i = 0;
 
 
