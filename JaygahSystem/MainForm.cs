@@ -77,6 +77,7 @@ namespace SSFGlasses
                 var ip = _App.ip_ssf_console = data["IP"].Value<string>();
                 var title = data["AppTitle"].Value<string>();
                 int interval = data["Interval"].Value<int>();
+                startAddress = data["Start"].Value<int>();
                 if (data["Demo"] != null)
                 {
                     var demo = data["Demo"].Value<bool>();
@@ -643,7 +644,7 @@ namespace SSFGlasses
             sensor20.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
             sensor21.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
         }
-
+        int startAddress = 2000;
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
             if (demo)
@@ -653,7 +654,7 @@ namespace SSFGlasses
             }
             try
             {
-                int startAddress = 2000;
+
                 _App.GenerateRegister(startAddress);
 
                 int index = cmbRack.SelectedIndex;
@@ -663,7 +664,7 @@ namespace SSFGlasses
                 var sen2 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr + 1], 2).Select(s => s.Equals('1')).ToList();
                 var sen3 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr + 2], 2).Select(s => s.Equals('1')).ToList();
                 int i = 0;
-               
+
 
                 for (int j = 0; j < 16 - sen1.Count; j++)
                     sen1.Add(false);
