@@ -1879,7 +1879,7 @@
             // cmbRack
             // 
             this.cmbRack.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRack.Font = new System.Drawing.Font("B Nazanin", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.cmbRack.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.cmbRack.FormattingEnabled = true;
             this.cmbRack.Items.AddRange(new object[] {
             "جایگاه alpha (α) شماره یک",
@@ -1892,7 +1892,7 @@
             "جایگاه theta (θ) شماره هشت"});
             this.cmbRack.Location = new System.Drawing.Point(18, 113);
             this.cmbRack.Name = "cmbRack";
-            this.cmbRack.Size = new System.Drawing.Size(315, 31);
+            this.cmbRack.Size = new System.Drawing.Size(315, 26);
             this.cmbRack.TabIndex = 385;
             // 
             // button115

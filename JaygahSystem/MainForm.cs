@@ -51,7 +51,7 @@ namespace SSFGlasses
             }
 
         };
-        //
+        bool demo = false;
         List<Rack> Racks = new List<Rack>();
         Rack CurrentRack;
         private void PMForm_Load(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace SSFGlasses
 
             _App.MBmaster = new ModbusTCP.Master();
             // changes
-            Racks.Add(new Rack(409, 408, 414, 500, 1));
+            Racks.Add(new Rack(409, 408, 414, 500, 257));
             Racks.Add(new Rack(2003, 416, 418, 501, 2));
             Racks.Add(new Rack(2007, 420, 422, 502, 3));
             Racks.Add(new Rack(2011, 424, 426, 503, 8));
@@ -76,9 +76,16 @@ namespace SSFGlasses
                 var data = JObject.Parse(text);
                 var ip = _App.ip_ssf_console = data["IP"].Value<string>();
                 var title = data["AppTitle"].Value<string>();
+                int interval = data["Interval"].Value<int>();
+                if (data["Demo"] != null)
+                {
+                    var demo = data["Demo"].Value<bool>();
+                    this.demo = demo;
+                }
 
                 lbltitlebar.Text = title;
                 txtConsoleIP.Text = ip;
+                refreshTimer.Interval = interval;
             }
 
 
@@ -565,7 +572,7 @@ namespace SSFGlasses
             }
             else
             {
-                 Log("Not Connect");
+                Log("Not Connect");
             }
             this.Cursor = Cursors.Default;
         }
@@ -590,9 +597,16 @@ namespace SSFGlasses
 
         private void button117_Click(object sender, EventArgs e)
         {
-            //refreshTimer.Enabled = true;
 
-            var sen1 = Convert.ToString(new Random().Next(10,128), 2).Select(s => s.Equals('1')).ToList();
+            refreshTimer_Tick(null, null);
+
+
+
+        }
+
+        private void PlayDemo()
+        {
+            var sen1 = Convert.ToString(new Random().Next(10, 128), 2).Select(s => s.Equals('1')).ToList();
             var sen2 = Convert.ToString(new Random().Next(0, 255), 2).Select(s => s.Equals('1')).ToList();
             var sen3 = Convert.ToString(new Random().Next(0, 255), 2).Select(s => s.Equals('1')).ToList();
 
@@ -628,13 +642,15 @@ namespace SSFGlasses
             sensor19.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
             sensor20.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
             sensor21.BackColor = sen3[i++] == true ? Color.Lime : Color.Gainsboro;
-
-
-
         }
 
         private void refreshTimer_Tick(object sender, EventArgs e)
         {
+            if (demo)
+            {
+                PlayDemo();
+                return;
+            }
             try
             {
                 int startAddress = 2000;
@@ -643,11 +659,11 @@ namespace SSFGlasses
                 int index = cmbRack.SelectedIndex;
 
                 //_App.UpdateSensors();
-                var sen1 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr], 2 ).Select(s => s.Equals('1')).ToList();
-                var sen2 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr+1], 2 ).Select(s => s.Equals('1')).ToList();
-                var sen3 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr+2], 2 ).Select(s => s.Equals('1')).ToList();
+                var sen1 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr], 2).Select(s => s.Equals('1')).ToList();
+                var sen2 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr + 1], 2).Select(s => s.Equals('1')).ToList();
+                var sen3 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr + 2], 2).Select(s => s.Equals('1')).ToList();
                 int i = 0;
-
+               
 
                 for (int j = 0; j < 16 - sen1.Count; j++)
                     sen1.Add(false);
