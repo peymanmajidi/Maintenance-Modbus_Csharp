@@ -3,16 +3,11 @@ X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\SSFGlasses.Properties.Resources.resources
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.csproj.GenerateResource.Cache
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.csproj.CoreCompileInputs.cache
-X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\MaintenanceModbusProject.exe.config
-X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\MaintenanceModbusProject.exe
-X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\MaintenanceModbusProject.pdb
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\Interop.zkemkeeper.dll
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\js.dll
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\js.pdb
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\SSFGlasses.MainForm.resources
-X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.exe
-X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.pdb
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Peyman\Documents\GitHub\SSF-Glasses-Project\JaygahSystem\bin\Debug\MaintenanceModbusProject.exe.config
 C:\Users\Peyman\Documents\GitHub\SSF-Glasses-Project\JaygahSystem\bin\Debug\MaintenanceModbusProject.exe
@@ -32,3 +27,8 @@ C:\Users\Peyman\Documents\GitHub\SSF-Glasses-Project\JaygahSystem\obj\x86\Debug\
 C:\Users\Peyman\Documents\GitHub\SSF-Glasses-Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.exe
 C:\Users\Peyman\Documents\GitHub\SSF-Glasses-Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.pdb
 C:\Users\Peyman\Documents\GitHub\SSF-Glasses-Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.csprojAssemblyReference.cache
+X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\_Glasses.exe.config
+X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\_Glasses.exe
+X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\_Glasses.pdb
+X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\_Glasses.exe
+X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\_Glasses.pdb

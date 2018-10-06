@@ -38,21 +38,15 @@ namespace SSFGlasses
             public string Title;
             public ushort Counter;
             public ushort Door;
+            public ushort Jack;
             public ushort Column;
             public ushort Load;
             public ushort RegSensorAddr;
             public ushort PM;
-            public Rack(string title, ushort counter, ushort door, ushort column, ushort load, ushort regSen, ushort PM)
-            { 
-                Title = title;
-                Counter = counter;
-                Door = door;
-                Column = column;
-                Load = load;
-                RegSensorAddr = regSen;
-                this.PM = PM;
-
-            }
+            public ushort Close_All_Doors;
+            public ushort Close_All_Jacks;
+            public ushort Door_Enable;
+            public ushort Keeper;
 
         };
         bool demo = false;
@@ -65,10 +59,7 @@ namespace SSFGlasses
 
             IntilizeRacks();
             IntilizeConfigFile();
-
-            //refreshTimer_Tick(sender, e);
             txtConsoleIP.Text = _App.ip_ssf_console;
-            
             txtLog.Text = @"peyman@superuser#";
             grpDoors.Enabled = grpJacks.Enabled = false;
 
@@ -114,64 +105,86 @@ namespace SSFGlasses
             }
         }
 
-      
+
 
 
         private void IntilizeRacks() // TODO Racks
         {
-            Racks.Add(new Rack(
-                title: "#1 Rack Alpha (α)",
-                counter: 2028,
-                door: 408,
-                column: 414,
-                load: 500,
-                regSen: 50,
-                PM: 101
-                ));
+            Racks.Add(new Rack()
+            {
+                Title = "#1 Rack Alpha (α)",
+                Counter = 2028,
+                Door = 408,
+                Column = 414,
+                Load = 500,
+                RegSensorAddr = 50,
+                PM = 101,
+                Close_All_Jacks = 102,
+                Keeper = 103,
+                Door_Enable = 596,
+                Jack = 100
+            });
             //-------------------------------------------------------------------------
-            Racks.Add(new Rack(
-                title: "#2 Rack Beta (β)",
-                counter: 1484,
-                door: 408,
-                column: 414,
-                load: 501,
-                regSen: 1481,
-                PM : 551
-            
-                ));
-            //-------------------------------------------------------------------------
-
-            Racks.Add(new Rack(
-                title: "#3 Rack Gamma (γ)",
-                counter: 1546,
-                door: 416,
-                column: 418,
-                load: 502,
-                regSen: 1544,
-                PM: 1546
-                ));
+            Racks.Add(new Rack() { 
+                Title = "#2 Rack Beta (β)",
+                Counter = 1484,
+                Door = 408,
+                Column = 414,
+                Load = 501,
+                RegSensorAddr = 1481,
+                PM = 551,
+                
+                Close_All_Jacks = 552,
+                Keeper = 553,
+                Door_Enable = 419,
+                Jack = 550
+            });
             //-------------------------------------------------------------------------
 
-            Racks.Add(new Rack(
-                title: "#4 Rack Delta (δ)",
-                counter: 1579,
-                door: 424,
-                column: 426,
-                load: 503,
-                regSen: 1576,
-                PM: 571
-                ));
+            Racks.Add(new Rack()
+            {
+                Title = "#3 Rack Gamma (γ)",
+                Counter = 1546,
+                Door = 416,
+                Column = 418,
+                Load = 502,
+                RegSensorAddr = 1544,
+                PM = 1546,
+                Close_All_Jacks = 562,
+                Keeper = 563,
+                Door_Enable = 423,
+                Jack = 560
+            });
             //-------------------------------------------------------------------------
 
-            Racks.Add(new Rack(
-                title: "#5 Rack Epsilon (ε)",
-                counter: 1611,
-                door: 428,
-                column: 430,
-                load: 504,
-                regSen:1610,
-                PM: 1611
-                ));
+            Racks.Add(new Rack() { 
+                Title = "#4 Rack Delta (δ)",
+                Counter = 1579,
+                Door = 424,
+                Column = 426,
+                Load = 503,
+                RegSensorAddr = 1576,
+                PM = 571,                
+                Close_All_Jacks = 572,
+                Keeper = 573,
+                Door_Enable = 427,
+                Jack = 570
+            });
+            //-------------------------------------------------------------------------
+
+            Racks.Add(new Rack() { 
+                Title = "#5 Rack Epsilon (ε)",
+                Counter = 1611,
+                Door = 428,
+                Column = 430,
+                Load = 504,
+                RegSensorAddr = 1610,
+                PM = 1611,
+                Close_All_Jacks = 582,
+                Keeper = 58,
+                Door_Enable = 429,
+                Jack = 580
+            });
             //-------------------------------------------------------------------------
 
 
@@ -1219,6 +1232,11 @@ namespace SSFGlasses
         {
             CurrentRack = Racks[cmbRack.SelectedIndex];
             lblCurrentRack.Text = CurrentRack.Title;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
