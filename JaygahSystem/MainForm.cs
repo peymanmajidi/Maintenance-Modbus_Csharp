@@ -203,6 +203,7 @@ namespace SSFGlasses
         }
         private void button109_Click(object sender, EventArgs e)
         {
+            picProgress.Enabled = !picProgress.Enabled;
             if (_App.Delta)
             {
                 _App.WriteOnRegister(CurrentRack.Column, (byte)0);
