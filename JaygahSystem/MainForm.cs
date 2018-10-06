@@ -41,14 +41,16 @@ namespace SSFGlasses
             public ushort Column;
             public ushort Load;
             public ushort RegSensorAddr;
-            public Rack(string title, ushort counter, ushort door, ushort column, ushort load, ushort regSen)
-            {
+            public ushort PM;
+            public Rack(string title, ushort counter, ushort door, ushort column, ushort load, ushort regSen, ushort PM)
+            { 
                 Title = title;
                 Counter = counter;
                 Door = door;
                 Column = column;
                 Load = load;
                 RegSensorAddr = regSen;
+                this.PM = PM;
 
             }
 
@@ -115,54 +117,60 @@ namespace SSFGlasses
       
 
 
-        private void IntilizeRacks()
+        private void IntilizeRacks() // TODO Racks
         {
             Racks.Add(new Rack(
                 title: "#1 Rack Alpha (α)",
-                counter: 0,
-                door: 0,
-                column: 0,
-                load: 0,
-                regSen: 0
+                counter: 2028,
+                door: 408,
+                column: 414,
+                load: 500,
+                regSen: 50,
+                PM: 101
                 ));
             //-------------------------------------------------------------------------
             Racks.Add(new Rack(
                 title: "#2 Rack Beta (β)",
-                counter: 0,
-                door: 0,
-                column: 0,
-                load: 0,
-                regSen: 0
+                counter: 1484,
+                door: 408,
+                column: 414,
+                load: 501,
+                regSen: 1481,
+                PM : 551
+            
                 ));
             //-------------------------------------------------------------------------
 
             Racks.Add(new Rack(
                 title: "#3 Rack Gamma (γ)",
-                counter: 0,
-                door: 0,
-                column: 0,
-                load: 0,
-                regSen: 0
+                counter: 1546,
+                door: 416,
+                column: 418,
+                load: 502,
+                regSen: 1544,
+                PM: 1546
                 ));
             //-------------------------------------------------------------------------
 
             Racks.Add(new Rack(
                 title: "#4 Rack Delta (δ)",
-                counter: 0,
-                door: 0,
-                column: 0,
-                load: 0,
-                regSen: 0
+                counter: 1579,
+                door: 424,
+                column: 426,
+                load: 503,
+                regSen: 1576,
+                PM: 571
                 ));
             //-------------------------------------------------------------------------
 
             Racks.Add(new Rack(
                 title: "#5 Rack Epsilon (ε)",
-                counter: 0,
-                door: 0,
-                column: 0,
-                load: 0,
-                regSen: 0
+                counter: 1611,
+                door: 428,
+                column: 430,
+                load: 504,
+                regSen:1610,
+                PM: 1611
                 ));
             //-------------------------------------------------------------------------
 
