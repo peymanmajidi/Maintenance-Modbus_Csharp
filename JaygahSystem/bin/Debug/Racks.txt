@@ -1,0 +1,12 @@
+﻿{
+  "Racks": 
+    [
+      "Title": "#1 Rack Alpha (α)",
+      "Counter": 0,
+      "Door": 0,
+      "Column": 0,
+      "Load": 0,
+      "RegSen": 0
+    ]
+  
+}

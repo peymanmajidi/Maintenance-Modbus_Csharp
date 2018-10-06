@@ -107,8 +107,13 @@ namespace SSFGlasses
                     MessageBox.Show("فایل تنظمیمات خراب شده است\r\nconnection_info.txt Dammaged", "Setup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     //Application.Exit();
                 }
+
+
             }
         }
+
+      
+
 
         private void IntilizeRacks()
         {

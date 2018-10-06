@@ -1,0 +1,29 @@
+﻿{
+  "Racks": [
+    {
+      "Title": "#1 Rack Alpha (α)",
+      "Counter": 0,
+      "Door": 0,
+      "Column": 0,
+      "Load": 0,
+      "RegSen": 0
+    },
+    {
+      "Title": "#2 Rack Beta (α)",
+      "Counter": 0,
+      "Door": 0,
+      "Column": 0,
+      "Load": 0,
+      "RegSen": 0
+    },
+    {
+      "Title": "#3 Rack Theta (α)",
+      "Counter": 0,
+      "Door": 0,
+      "Column": 0,
+      "Load": 0,
+      "RegSen": 0
+    }
+  ]
+  
+}

@@ -3,5 +3,5 @@
 	"Start" : 2000,
 	"AppTitle" : "RSA+ Controlling Center",
 	"Demo": true,
-	"Interval": 1000	
+	"Interval": 300	
 }
