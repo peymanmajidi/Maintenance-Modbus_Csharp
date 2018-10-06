@@ -203,7 +203,6 @@ namespace SSFGlasses
         }
         private void button109_Click(object sender, EventArgs e)
         {
-            picProgress.Enabled = !picProgress.Enabled;
             if (_App.Delta)
             {
                 _App.WriteOnRegister(CurrentRack.Column, (byte)0);
@@ -688,21 +687,13 @@ namespace SSFGlasses
         private void button117_Click(object sender, EventArgs e)
         {
 
-<<<<<<< HEAD
-            refreshTimer_Tick(null, null);
+            refreshTimer_Tick(null, e); // help me
 
 
 
         }
 
         private void PlayDemo()
-=======
-            Demo();
-
-        }
-
-        private void Demo()
->>>>>>> 56104d5b284709e7d129c76bbb8e651122caa6af
         {
             var sen1 = Convert.ToString(new Random().Next(10, 128), 2).Select(s => s.Equals('1')).ToList();
             var sen2 = Convert.ToString(new Random().Next(0, 255), 2).Select(s => s.Equals('1')).ToList();
@@ -746,11 +737,7 @@ namespace SSFGlasses
         {
             if (demo)
             {
-<<<<<<< HEAD
                 PlayDemo();
-=======
-                Demo();
->>>>>>> 56104d5b284709e7d129c76bbb8e651122caa6af
                 return;
             }
             try

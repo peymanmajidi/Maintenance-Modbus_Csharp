@@ -163,13 +163,13 @@
             this.txtConsoleIP = new System.Windows.Forms.TextBox();
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.picProgress = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblCurrentRack = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutoUpdate)).BeginInit();
             this.grpDoors.SuspendLayout();
@@ -186,7 +186,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -1853,6 +1853,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Keeper";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(222, 123);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 388;
+            this.label4.Text = "OPEN";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(67, 123);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.TabIndex = 387;
+            this.label3.Text = "CLOSE";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1884,17 +1903,16 @@
             this.pictureBox5.TabIndex = 373;
             this.pictureBox5.TabStop = false;
             // 
-            // picProgress
+            // pictureBox1
             // 
-            this.picProgress.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picProgress.Enabled = false;
-            this.picProgress.Image = ((System.Drawing.Image)(resources.GetObject("picProgress.Image")));
-            this.picProgress.Location = new System.Drawing.Point(800, 438);
-            this.picProgress.Name = "picProgress";
-            this.picProgress.Size = new System.Drawing.Size(563, 470);
-            this.picProgress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picProgress.TabIndex = 380;
-            this.picProgress.TabStop = false;
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(871, 460);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(420, 397);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 380;
+            this.pictureBox1.TabStop = false;
             // 
             // lblCurrentRack
             // 
@@ -1906,25 +1924,6 @@
             this.lblCurrentRack.TabIndex = 385;
             this.lblCurrentRack.Text = "Farasoo";
             this.lblCurrentRack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(67, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
-            this.label3.TabIndex = 387;
-            this.label3.Text = "CLOSE";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(222, 123);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 388;
-            this.label4.Text = "OPEN";
             // 
             // MainForm
             // 
@@ -1946,7 +1945,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.lbltitlebar);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.picProgress);
+            this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -1972,7 +1971,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picProgress)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2004,7 +2003,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox picProgress;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.Button button27;
