@@ -557,6 +557,10 @@
     <None Include="Resources\photo_2017-05-25_08-15-36.jpg" />
     <None Include="Resources\off.png" />
     <None Include="Resources\on.gif" />
+    <None Include="Resources\keeper_close.png" />
+    <None Include="Resources\keeper_open.png" />
+    <None Include="Resources\k_c.png" />
+    <None Include="Resources\k_o.png" />
     <Content Include="Resources\Printer.png" />
     <None Include="Resources\Steam28.png" />
     <None Include="Resources\Printer1.png" />

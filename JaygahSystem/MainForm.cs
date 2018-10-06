@@ -35,18 +35,20 @@ namespace SSFGlasses
         //changes
         class Rack
         {
-            public ushort counter;
-            public ushort door;
-            public ushort column;
-            public ushort load;
-            public ushort regSensorAddr;
-            public Rack(ushort c, ushort d, ushort cl, ushort ld, ushort rsa)
+            public string Title;
+            public ushort Counter;
+            public ushort Door;
+            public ushort Column;
+            public ushort Load;
+            public ushort RegSensorAddr;
+            public Rack(string title, ushort counter, ushort door, ushort column, ushort load, ushort regSen)
             {
-                counter = c;
-                door = d;
-                column = cl;
-                load = ld;
-                regSensorAddr = rsa;
+                Title = title;
+                Counter = counter;
+                Door = door;
+                Column = column;
+                Load = load;
+                RegSensorAddr = regSen;
 
             }
 
@@ -58,46 +60,106 @@ namespace SSFGlasses
         {
 
             _App.MBmaster = new ModbusTCP.Master();
-            // changes
-            Racks.Add(new Rack(409, 408, 414, 500, 257));
-            Racks.Add(new Rack(2003, 416, 418, 501, 2));
-            Racks.Add(new Rack(2007, 420, 422, 502, 3));
-            Racks.Add(new Rack(2011, 424, 426, 503, 8));
-            Racks.Add(new Rack(2015, 428, 430, 504, 7));
-            Racks.Add(new Rack(2019, 432, 434, 505, 6));
-            Racks.Add(new Rack(2023, 436, 437, 506, 5));
-            Racks.Add(new Rack(2027, 439, 440, 507, 4));
-            //
 
+            IntilizeRacks();
+            IntilizeConfigFile();
+
+            //refreshTimer_Tick(sender, e);
+            txtConsoleIP.Text = _App.ip_ssf_console;
+            
+            txtLog.Text = @"peyman@superuser#";
+            grpDoors.Enabled = grpJacks.Enabled = false;
+
+            cmbRack.DataSource = Racks.Select(r => r.Title).ToList();
+            cmbRack.SelectedIndex = 0;
+
+
+
+        }
+
+        private void IntilizeConfigFile()
+        {
             string path = "connection_info.txt";
             if (File.Exists(path))
             {
-                var text = File.ReadAllText(path);
-                var data = JObject.Parse(text);
-                var ip = _App.ip_ssf_console = data["IP"].Value<string>();
-                var title = data["AppTitle"].Value<string>();
-                int interval = data["Interval"].Value<int>();
-                startAddress = data["Start"].Value<int>();
-                if (data["Demo"] != null)
+                try
                 {
-                    var demo = data["Demo"].Value<bool>();
-                    this.demo = demo;
+                    var text = File.ReadAllText(path);
+                    var data = JObject.Parse(text);
+                    var ip = _App.ip_ssf_console = data["IP"].Value<string>();
+                    var title = data["AppTitle"].Value<string>();
+                    int interval = data["Interval"].Value<int>();
+                    startAddress = data["Start"].Value<int>();
+                    if (data["Demo"] != null)
+                    {
+                        var demo = data["Demo"].Value<bool>();
+                        this.demo = demo;
+                    }
+
+                    lbltitlebar.Text = title;
+                    txtConsoleIP.Text = ip;
+                    refreshTimer.Interval = interval;
+
                 }
+                catch
+                {
 
-                lbltitlebar.Text = title;
-                txtConsoleIP.Text = ip;
-                refreshTimer.Interval = interval;
+                    MessageBox.Show("فایل تنظمیمات خراب شده است\r\nconnection_info.txt Dammaged", "Setup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //Application.Exit();
+                }
             }
+        }
 
+        private void IntilizeRacks()
+        {
+            Racks.Add(new Rack(
+                title: "#1 Rack Alpha (α)",
+                counter: 0,
+                door: 0,
+                column: 0,
+                load: 0,
+                regSen: 0
+                ));
+            //-------------------------------------------------------------------------
+            Racks.Add(new Rack(
+                title: "#2 Rack Beta (β)",
+                counter: 0,
+                door: 0,
+                column: 0,
+                load: 0,
+                regSen: 0
+                ));
+            //-------------------------------------------------------------------------
 
+            Racks.Add(new Rack(
+                title: "#3 Rack Gamma (γ)",
+                counter: 0,
+                door: 0,
+                column: 0,
+                load: 0,
+                regSen: 0
+                ));
+            //-------------------------------------------------------------------------
 
+            Racks.Add(new Rack(
+                title: "#4 Rack Delta (δ)",
+                counter: 0,
+                door: 0,
+                column: 0,
+                load: 0,
+                regSen: 0
+                ));
+            //-------------------------------------------------------------------------
 
-            cmbRack.SelectedIndex = 0;
-            //refreshTimer_Tick(sender, e);
-            txtConsoleIP.Text = _App.ip_ssf_console;
-            // txtLog.Focus();
-            txtLog.Text = @"peyman@superuser#";
-            grpDoors.Enabled = grpJacks.Enabled = false;
+            Racks.Add(new Rack(
+                title: "#5 Rack Epsilon (ε)",
+                counter: 0,
+                door: 0,
+                column: 0,
+                load: 0,
+                regSen: 0
+                ));
+            //-------------------------------------------------------------------------
 
 
 
@@ -117,8 +179,8 @@ namespace SSFGlasses
         {
             if (_App.Delta)
             {
-                _App.WriteOnRegister(CurrentRack.column, (byte)0);
-                _App.WriteOnRegister(CurrentRack.door, (byte)0);
+                _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+                _App.WriteOnRegister(CurrentRack.Door, (byte)0);
 
 
                 return;
@@ -134,8 +196,8 @@ namespace SSFGlasses
         {
             if (_App.Delta)
             {
-                _App.WriteOnRegister(CurrentRack.column, (byte)0);
-                _App.WriteOnRegister(CurrentRack.door, (byte)0);
+                _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+                _App.WriteOnRegister(CurrentRack.Door, (byte)0);
 
 
                 return;
@@ -158,9 +220,9 @@ namespace SSFGlasses
 
                 return false;
             }
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
             return false;
         }
 
@@ -172,9 +234,9 @@ namespace SSFGlasses
                 return false;
             }
 
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
             return false;
         }
 
@@ -187,9 +249,9 @@ namespace SSFGlasses
                 return false;
             }
 
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
             return false;
         }
 
@@ -201,9 +263,9 @@ namespace SSFGlasses
                 return false;
             }
 
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
             return false;
         }
 
@@ -660,9 +722,9 @@ namespace SSFGlasses
                 int index = cmbRack.SelectedIndex;
 
                 //_App.UpdateSensors();
-                var sen1 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr], 2).Select(s => s.Equals('1')).ToList();
-                var sen2 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr + 1], 2).Select(s => s.Equals('1')).ToList();
-                var sen3 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.regSensorAddr + 2], 2).Select(s => s.Equals('1')).ToList();
+                var sen1 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.RegSensorAddr], 2).Select(s => s.Equals('1')).ToList();
+                var sen2 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.RegSensorAddr + 1], 2).Select(s => s.Equals('1')).ToList();
+                var sen3 = Convert.ToString(_App.GetBack[startAddress + CurrentRack.RegSensorAddr + 2], 2).Select(s => s.Equals('1')).ToList();
                 int i = 0;
 
 
@@ -1120,8 +1182,8 @@ namespace SSFGlasses
         {
             if (_App.Delta)
             {
-                _App.WriteOnRegister(CurrentRack.column, (byte)0);
-                _App.WriteOnRegister(CurrentRack.door, (byte)0);
+                _App.WriteOnRegister(CurrentRack.Column, (byte)0);
+                _App.WriteOnRegister(CurrentRack.Door, (byte)0);
 
 
                 return;
@@ -1138,6 +1200,12 @@ namespace SSFGlasses
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             new AboutMe().ShowDialog();
+        }
+
+        private void cmbRack_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CurrentRack = Racks[cmbRack.SelectedIndex];
+            lblCurrentRack.Text = CurrentRack.Title;
         }
     }
 }
