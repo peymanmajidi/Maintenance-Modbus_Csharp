@@ -2,7 +2,7 @@
 Simple and useful modbus windows form project | C#
 
 
-![Shot](https://raw.githubusercontent.com/peymanmajidi/SSF-Glasses-Project/modbusPro/screenshot.PNG)
+![Shot](https://github.com/peymanmajidi/SSF-Glasses-Project/blob/registers/screenshot.PNG)
 
 Have a good time :)))))))
 From laptop to you
