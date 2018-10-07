@@ -1910,7 +1910,7 @@
             this.picProgress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.picProgress.Enabled = false;
             this.picProgress.Image = ((System.Drawing.Image)(resources.GetObject("picProgress.Image")));
-            this.picProgress.Location = new System.Drawing.Point(871, 460);
+            this.picProgress.Location = new System.Drawing.Point(871, 470);
             this.picProgress.Name = "picProgress";
             this.picProgress.Size = new System.Drawing.Size(420, 397);
             this.picProgress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
