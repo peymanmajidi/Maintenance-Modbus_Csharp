@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Threading;
 
 namespace SSFGlasses
 {
@@ -125,7 +126,8 @@ namespace SSFGlasses
                 Jack = 100
             });
             //-------------------------------------------------------------------------
-            Racks.Add(new Rack() { 
+            Racks.Add(new Rack()
+            {
                 Title = "#2 Rack Beta (β)",
                 Counter = 1484,
                 Door = 408,
@@ -133,7 +135,7 @@ namespace SSFGlasses
                 Load = 501,
                 RegSensorAddr = 1481,
                 PM = 551,
-                
+
                 Close_All_Jacks = 552,
                 Keeper = 553,
                 Door_Enable = 419,
@@ -157,14 +159,15 @@ namespace SSFGlasses
             });
             //-------------------------------------------------------------------------
 
-            Racks.Add(new Rack() { 
+            Racks.Add(new Rack()
+            {
                 Title = "#4 Rack Delta (δ)",
                 Counter = 1579,
                 Door = 424,
                 Column = 426,
                 Load = 503,
                 RegSensorAddr = 1576,
-                PM = 571,                
+                PM = 571,
                 Close_All_Jacks = 572,
                 Keeper = 573,
                 Door_Enable = 427,
@@ -172,7 +175,8 @@ namespace SSFGlasses
             });
             //-------------------------------------------------------------------------
 
-            Racks.Add(new Rack() { 
+            Racks.Add(new Rack()
+            {
                 Title = "#5 Rack Epsilon (ε)",
                 Counter = 1611,
                 Door = 428,
@@ -203,6 +207,7 @@ namespace SSFGlasses
         }
         private void button109_Click(object sender, EventArgs e)
         {
+            picProgress.Enabled = !picProgress.Enabled;
             if (_App.Delta)
             {
                 _App.WriteOnRegister(CurrentRack.Column, (byte)0);
@@ -241,15 +246,24 @@ namespace SSFGlasses
 
         public bool OpenDoor(int door)
         {
+
             if (_App.Delta == false)
             {
 
                 return false;
             }
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            return false;
+            _App.WriteOnRegister(CurrentRack.PM, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Door_Enable, (byte)1);
+            _App.WriteOnRegister(CurrentRack.Door, (byte)door);
+            new Thread(() =>
+            {
+                Thread.Sleep(1000);
+                _App.WriteOnRegister(CurrentRack.Door_Enable, (byte)0);
+                _App.WriteOnRegister(CurrentRack.Door, (byte)0);
+
+
+            }).Start();
+            return true;
         }
 
         public bool CloseDoor(int door)
@@ -260,10 +274,17 @@ namespace SSFGlasses
                 return false;
             }
 
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            return false;
+            _App.WriteOnRegister(CurrentRack.PM, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Door_Enable, (byte)2);
+            new Thread(() =>
+            {
+                Thread.Sleep(1000);
+                _App.WriteOnRegister(CurrentRack.Door_Enable, (byte)0);
+                _App.WriteOnRegister(CurrentRack.Door, (byte)0);
+
+
+            }).Start();
+            return true;
         }
 
 
@@ -275,10 +296,18 @@ namespace SSFGlasses
                 return false;
             }
 
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            return false;
+            _App.WriteOnRegister(CurrentRack.PM, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Door_Enable, (byte)1);
+            _App.WriteOnRegister(CurrentRack.Jack, (byte)jack);
+            _App.WriteOnRegister(CurrentRack.Door, (byte)0);
+
+            new Thread(() =>
+            {
+                Thread.Sleep(1000);
+                _App.WriteOnRegister(CurrentRack.Door_Enable, (byte)0);
+
+            }).Start();
+            return true;
         }
 
         public bool CloseJack(int jack)
@@ -289,10 +318,17 @@ namespace SSFGlasses
                 return false;
             }
 
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            _App.WriteOnRegister(CurrentRack.Column, (byte)0);
-            return false;
+            _App.WriteOnRegister(CurrentRack.PM, (byte)0);
+            _App.WriteOnRegister(CurrentRack.Close_All_Jacks, (byte)1);
+
+            new Thread(() =>
+            {
+                Thread.Sleep(1000);
+                _App.WriteOnRegister(CurrentRack.Close_All_Jacks, (byte)0);
+
+
+            }).Start();
+            return true;
         }
 
 
@@ -1236,6 +1272,18 @@ namespace SSFGlasses
 
         private void label3_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnOpenKeeper(object sender, EventArgs e)
+        {
+            _App.WriteOnRegister(CurrentRack.Keeper, (byte)0);
+
+        }
+
+        private void btnCloseKeeper(object sender, EventArgs e)
+        {
+            _App.WriteOnRegister(CurrentRack.Keeper, (byte)1);
 
         }
     }

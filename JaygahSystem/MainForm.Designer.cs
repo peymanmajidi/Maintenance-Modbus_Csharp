@@ -168,7 +168,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picProgress = new System.Windows.Forms.PictureBox();
             this.lblCurrentRack = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkAutoUpdate)).BeginInit();
@@ -186,7 +186,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picProgress)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -1882,6 +1882,7 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox4.TabIndex = 386;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.btnOpenKeeper);
             // 
             // pictureBox2
             // 
@@ -1893,6 +1894,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 385;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.btnCloseKeeper);
             // 
             // pictureBox5
             // 
@@ -1903,16 +1905,17 @@
             this.pictureBox5.TabIndex = 373;
             this.pictureBox5.TabStop = false;
             // 
-            // pictureBox1
+            // picProgress
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(871, 460);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(420, 397);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 380;
-            this.pictureBox1.TabStop = false;
+            this.picProgress.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.picProgress.Enabled = false;
+            this.picProgress.Image = ((System.Drawing.Image)(resources.GetObject("picProgress.Image")));
+            this.picProgress.Location = new System.Drawing.Point(871, 460);
+            this.picProgress.Name = "picProgress";
+            this.picProgress.Size = new System.Drawing.Size(420, 397);
+            this.picProgress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picProgress.TabIndex = 380;
+            this.picProgress.TabStop = false;
             // 
             // lblCurrentRack
             // 
@@ -1945,7 +1948,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.lbltitlebar);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picProgress);
             this.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -1971,7 +1974,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picProgress)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2003,7 +2006,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picProgress;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.Button button27;
