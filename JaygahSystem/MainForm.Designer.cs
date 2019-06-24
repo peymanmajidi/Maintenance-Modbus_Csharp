@@ -1678,7 +1678,7 @@
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtLog.Size = new System.Drawing.Size(319, 478);
-            this.txtLog.TabIndex = 0;
+            this.txtLog.TabIndex = 888;
             this.txtLog.Text = "c:\\>";
             // 
             // groupBox8
@@ -1747,6 +1747,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Black;
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(3, 16);
@@ -1768,7 +1769,7 @@
             this.groupBox15.Location = new System.Drawing.Point(581, 38);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(346, 153);
-            this.groupBox15.TabIndex = 384;
+            this.groupBox15.TabIndex = 0;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "IP Address";
             // 

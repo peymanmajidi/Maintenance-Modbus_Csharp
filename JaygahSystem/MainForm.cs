@@ -27,13 +27,7 @@ namespace SSFGlasses
             this.Close();
         }
 
-        private void button32_Click(object sender, EventArgs e)
-        {
 
-        }
-
-
-        //changes
         class Rack
         {
             public string Title;
@@ -50,6 +44,7 @@ namespace SSFGlasses
             public ushort Keeper;
 
         };
+
         bool demo = false;
         List<Rack> Racks = new List<Rack>();
         Rack CurrentRack;
@@ -60,13 +55,12 @@ namespace SSFGlasses
 
             IntilizeRacks();
             IntilizeConfigFile();
-            txtConsoleIP.Text = _App.ip_ssf_console;
-            txtLog.Text = @"peyman@superuser#";
-            grpDoors.Enabled = grpJacks.Enabled = false;
 
+            txtConsoleIP.Text = _App.ip_ssf_console;
+            txtLog.Text = $"{Environment.UserName}@superuser#";
+            grpDoors.Enabled = grpJacks.Enabled = false;
             cmbRack.DataSource = Racks.Select(r => r.Title).ToList();
             cmbRack.SelectedIndex = 0;
-
 
 
         }
@@ -98,8 +92,8 @@ namespace SSFGlasses
                 catch
                 {
 
-                    MessageBox.Show("فایل تنظمیمات خراب شده است\r\nconnection_info.txt Dammaged", "Setup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //Application.Exit();
+                    MessageBox.Show("فایل تنظیمات خراب شده است\r\nconnection_info.txt Dammaged", "Setup Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
                 }
 
 
@@ -109,8 +103,10 @@ namespace SSFGlasses
 
 
 
-        private void IntilizeRacks() // TODO Racks
+        private void IntilizeRacks()
         {
+            #region Racks Setup
+
             Racks.Add(new Rack()
             {
                 Title = "#1 Rack Alpha (α)",
@@ -189,9 +185,8 @@ namespace SSFGlasses
                 Door_Enable = 429,
                 Jack = 580
             });
-            //-------------------------------------------------------------------------
-
-
+            //------------------------------------------------------------------------- 
+            #endregion
 
         }
 

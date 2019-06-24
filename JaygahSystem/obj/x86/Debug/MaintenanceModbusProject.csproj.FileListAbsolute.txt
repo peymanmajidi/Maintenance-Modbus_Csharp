@@ -32,3 +32,21 @@ X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debu
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\bin\Debug\_Glasses.pdb
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\_Glasses.exe
 X:\Peyman\Documents\Visual Studio 2017\SSF Glasses Project\JaygahSystem\obj\x86\Debug\_Glasses.pdb
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\_Glasses.exe.config
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\_Glasses.exe
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\_Glasses.pdb
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\Interop.zkemkeeper.dll
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\js.dll
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\js.pdb
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.csprojFakesResolveAssemblyReference.cache
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.csprojAssemblyReference.cache
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\SSFGlasses.AboutMe.resources
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\SSFGlasses.MainForm.resources
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\SSFGlasses.Properties.Resources.resources
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.csproj.GenerateResource.cache
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.csproj.CoreCompileInputs.cache
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.csproj.CopyComplete
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\_Glasses.exe
+C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\_Glasses.pdb
