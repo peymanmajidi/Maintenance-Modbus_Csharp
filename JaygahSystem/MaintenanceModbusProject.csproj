@@ -144,7 +144,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>KalaReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <Fakes Include="Fakes\FaconSvr.fakes" />
     <None Include="App1.config" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -513,6 +512,9 @@
     <None Include="Resources\000.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Screenshots\main.jpg" />
+    <Content Include="Screenshots\rack.jpg" />
+    <Content Include="Screenshots\screenshot.png" />
     <None Include="Resources\switches_on.png" />
     <None Include="Resources\switches.png" />
     <None Include="Service References\ServiceReference2\SendService1.disco" />
@@ -844,9 +846,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference2\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Screenshots\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
