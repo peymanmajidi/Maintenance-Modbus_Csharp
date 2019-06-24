@@ -40,7 +40,6 @@ C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem
 C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\Interop.zkemkeeper.dll
 C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\js.dll
 C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\bin\Debug\js.pdb
-C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.csprojFakesResolveAssemblyReference.cache
 C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\MaintenanceModbusProject.csprojAssemblyReference.cache
 C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\SSFGlasses.AboutMe.resources
 C:\Users\Mahan\Source\Repos\peymanmajidi\Maintenance-Modbus-Project\JaygahSystem\obj\x86\Debug\SSFGlasses.MainForm.resources
